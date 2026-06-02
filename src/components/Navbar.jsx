@@ -18,9 +18,10 @@ const Navbar = () => {
           <div className="h-20 flex items-center justify-between">
             {/* Logo - Left Side */}
             <div className="lg:hidden block flex items-center">
-             <a href="#" className="text-white text-lg font-semibold hover:text-gray-300 transition">
+             {/* <a href="#" className="text-white text-lg font-semibold hover:text-gray-300 transition">
                 Home
-              </a>
+              </a> */}
+                <img src="/images/logo.png" alt="Logo" className="h-16 w-auto" />
             </div>
 
             {/* Desktop Menu - Hidden on Mobile */}

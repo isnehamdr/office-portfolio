@@ -1,129 +1,205 @@
-import React from 'react';
-import { ArrowUpRight, ShieldCheck, HeartHandshake, History, Award } from 'lucide-react';
+import { useState, useEffect, useRef } from "react";
 
-export default function About() {
+const journeySteps = [
+  {
+    tag: "The Beginning",
+    title: "Hospitality to IT",
+    body: "Sandip's journey began in the hospitality sector, where he faced numerous challenges that tested his resilience and determination. Working in that industry taught him valuable lessons about customer service, managing a business, and the importance of adaptability.",
+  },
+  {
+    tag: "The Spark",
+    title: "Spotting a Gap",
+    body: "During his time working at a leading Indian software company in Pokhara, he noticed a significant gap in technological advancement and expertise within the local IT sector. This observation fueled his ambition to create a company that could raise the standards of IT services in Nepal.",
+  },
+  {
+    tag: "The Founding",
+    title: "Starting from Scratch",
+    body: "With this mission in mind, Sandip, along with his friend Ajit Singdan, established S.A I.T Solution and Trade Concern Pvt. Ltd. in Kathmandu. The early days were far from easy — they started in a humble residential flat. However, their determination and commitment to excellence gradually set them apart in the industry.",
+  },
+  {
+    tag: "Growth — 2019",
+    title: "Expanding to Pokhara",
+    body: "Recognizing the increasing demand for quality IT services, they expanded their operations, opening a second branch in Pokhara on June 27th, 2019. Today, with successful operations in both Kathmandu and Pokhara, they remain dedicated to delivering top-notch IT solutions tailored to their clients' needs.",
+  },
+  {
+    tag: "Today",
+    title: "Where He Stands Today",
+    body: "With 12+ years of experience in IT and business services, Sandip has helped businesses grow by providing practical and effective solutions across digital transformation, IT infrastructure, cybersecurity, and software development.",
+  },
+  {
+    tag: "Expertise",
+    title: "Core Competencies",
+    body: "His core competencies span digital transformation, IT consulting, cybersecurity, custom software development, project management, and problem solving — delivering innovative, actionable solutions to complex challenges.",
+  },
+  {
+    tag: "Looking Ahead",
+    title: "The Road Forward",
+    body: "Sandip is focused on expanding his expertise in emerging technologies like AI, blockchain, and IoT; scaling his business to reach global clients; mentoring the next generation of IT professionals; and driving innovation in IT infrastructure.",
+  },
+];
+
+// ── Placeholder image components ──────────────────────────────────────────────
+function ImgMainPlaceholder() {
   return (
-    <section className="relative bg-[#09090b] px-6 py-24 md:px-12 lg:px-20 border-t border-zinc-900" id="about">
-      {/* Background grids */}
-      <div className="absolute inset-0 bg-grid-dim opacity-20 pointer-events-none" />
-      
-      <div className="mx-auto max-w-7xl relative z-10">
-        
-        {/* Section Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16 items-start">
-          <div className="lg:col-span-4">
-            <span className="text-zinc-500 text-xs font-bold tracking-widest uppercase flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-orange" />
-              THE BACKGROUND STORY
-            </span>
-            <h2 className="font-display text-4xl lg:text-5xl font-black text-white uppercase mt-4 tracking-tight">
-              My Journey <br />
-              <span className="text-brand-orange">In IT Business</span>
-            </h2>
-          </div>
-          
-          <div className="lg:col-span-8 flex flex-col justify-between h-full pt-4">
-            <p className="font-sans text-zinc-400 text-base md:text-lg leading-relaxed font-light max-w-3xl">
-              "My journey began in the hospitality sector, where I faced numerous challenges that tested my resilience and determination. Working in this industry taught me valuable lessons about customer service, managing a business, and the importance of adaptability. It laid the foundation for creating practical, customer-first tech systems."
-            </p>
-          </div>
+    <div className="w-full h-full flex items-center justify-center ">
+      <img src="/images/about1.png" alt="" />
+    </div>
+  );
+}
+
+function ImgSecondaryPlaceholder() {
+  return (
+    <div className="w-full h-full flex items-center justify-center ">
+      <img src="/images/about2.png" alt="" />
+    </div>
+  );
+}
+
+// ── Timeline Item with intersection-observer fade-in ──────────────────────────
+function TimelineItem({ step, index }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.15 }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
+  const isLate = index >= 4;
+
+  return (
+    <div
+      ref={ref}
+      className="relative pl-8 mb-12 last:mb-0 transition-all duration-700"
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(20px)",
+        transitionDelay: `${index * 80}ms`,
+      }}
+    >
+      {/* Dot */}
+      <span
+        className={`absolute left-0 top-1.5 w-3 h-3 rounded-full border-2 border-stone-50 ${
+          isLate ? "bg-stone-400 ring-1 ring-stone-400" : "bg-stone-900 ring-1 ring-stone-900"
+        }`}
+        style={{ zIndex: 1 }}
+      />
+
+      {/* Tag */}
+      <span className="inline-block text-[10px] font-semibold tracking-widest uppercase text-stone-500 bg-stone-100 px-3 py-1 rounded-full mb-2">
+        {step.tag}
+      </span>
+
+      {/* Heading */}
+      <h3 className=" text-xl text-stone-900 mb-2 leading-snug">{step.title}</h3>
+
+      {/* Body */}
+      <p className="text-sm text-stone-900 leading-relaxed max-w-2xl">{step.body}</p>
+    </div>
+  );
+}
+
+// ── Main Component ─────────────────────────────────────────────────────────────
+export default function SandipJourney() {
+  return (
+    <div className="min-h-screen bg-white ">
+
+      {/* ── INTRO SECTION ── */}
+      <section className=" px-6 md:px-24 pt-16 pb-10">
+        {/* Eyebrow */}
+        <div className="flex items-center gap-3 mb-5">
+          <span className="block w-7 h-px bg-stone-800" />
+          <span className="text-lg font-semibold tracking-[0.18em] uppercase text-stone-800">
+            Who We Are
+          </span>
         </div>
 
-        {/* Feature Cards matching the high-end grid blocks of Zinle */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="about-highlights-grid">
-          
-          {/* Card 1 */}
-          <div className="group relative bg-[#0e0e11] border border-zinc-900 p-8 rounded-2xl transition-all duration-350 hover:border-brand-orange/40 hover:-translate-y-1">
-            <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <ArrowUpRight className="h-5 w-5 text-brand-orange" />
+        <h2 className=" text-3xl md:text-4xl text-stone-900 leading-[62px] max-w-2xl mb-4">
+          We are a dynamic agency dedicated to crafting innovative digital solutions
+        </h2>
+       
+      </section>
+
+      {/* ── SPLIT LAYOUT ── */}
+      <section className="px-6 md:px-24 pb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+
+          {/* Left column */}
+          <div className="flex flex-col gap-5">
+            {/* Main image */}
+            <div className="relative rounded-2xl overflow-hidden h-72 md:h-80 bg-stone-200">
+              <ImgMainPlaceholder />
+              {/* Badge */}
+              {/* <div className="absolute bottom-4 left-4 bg-white rounded-full px-4 py-2 flex items-center gap-2 shadow-md">
+                <div className="flex">
+                  {["bg-stone-400", "bg-stone-300", "bg-stone-200"].map((c, i) => (
+                    <span
+                      key={i}
+                      className={`w-6 h-6 rounded-full border-2 border-white ${c} ${i !== 0 ? "-ml-2" : ""}`}
+                    />
+                  ))}
+                </div>
+                <span className="text-[11px] font-medium text-stone-700 whitespace-nowrap">
+                  Trusted by hundreds
+                </span>
+              </div> */}
             </div>
-            <div className="h-12 w-12 rounded-xl bg-brand-orange/10 flex items-center justify-center text-brand-orange mb-6">
-              <History className="h-6 w-6" />
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                { num: "12+", label: "Years of experience" },
+                { num: "2", label: "Offices in Nepal" },
+              ].map((s) => (
+                <div
+                  key={s.label}
+                  className="bg-white rounded-2xl p-5 border border-stone-200"
+                >
+                  <div className=" text-4xl text-stone-900 leading-none mb-1">
+                    {s.num}
+                  </div>
+                  <div className="text-xs text-stone-400 font-medium">{s.label}</div>
+                </div>
+              ))}
             </div>
-            <h3 className="font-display text-xl font-bold text-white uppercase tracking-tight mb-3">
-              Hospitality Origin
-            </h3>
-            <p className="font-sans text-sm text-zinc-500 leading-relaxed">
-              Roots in active client-service sectors, instilling a deep respect for customer satisfaction and service standards.
-            </p>
           </div>
 
-          {/* Card 2 */}
-          <div className="group relative bg-[#0e0e11] border border-zinc-900 p-8 rounded-2xl transition-all duration-350 hover:border-brand-orange/40 hover:-translate-y-1">
-            <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <ArrowUpRight className="h-5 w-5 text-brand-orange" />
+          {/* Right column */}
+          <div className="flex flex-col gap-5">
+            {/* Secondary image */}
+            <div className="rounded-2xl overflow-hidden h-52 md:h-56 bg-stone-300">
+              <ImgSecondaryPlaceholder />
             </div>
-            <div className="h-12 w-12 rounded-xl bg-[#52644d]/10 flex items-center justify-center text-[#6b8265] mb-6">
-              <Award className="h-6 w-6" />
-            </div>
-            <h3 className="font-display text-xl font-bold text-white uppercase tracking-tight mb-3">
-              Adaptability First
-            </h3>
-            <p className="font-sans text-sm text-zinc-500 leading-relaxed">
-              Successfully navigated operational difficulties, scaling flexible business setups that quickly pivot to modern tech standards.
-            </p>
-          </div>
 
-          {/* Card 3 */}
-          <div className="group relative bg-[#0e0e11] border border-zinc-900 p-8 rounded-2xl transition-all duration-350 hover:border-brand-orange/40 hover:-translate-y-1">
-            <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <ArrowUpRight className="h-5 w-5 text-brand-orange" />
-            </div>
-            <div className="h-12 w-12 rounded-xl bg-orange-950/15 flex items-center justify-center text-orange-400 mb-6 font-mono text-lg font-bold">
-              12+
-            </div>
-            <h3 className="font-display text-xl font-bold text-white uppercase tracking-tight mb-3">
-              Years in IT
-            </h3>
-            <p className="font-sans text-sm text-zinc-500 leading-relaxed">
-              Twelve years pioneering custom software integrations, enterprise architecture, and secure digital workflows.
-            </p>
-          </div>
-
-          {/* Card 4 */}
-          <div className="group relative bg-[#0e0e11] border border-zinc-900 p-8 rounded-2xl transition-all duration-350 hover:border-brand-orange/40 hover:-translate-y-1">
-            <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <ArrowUpRight className="h-5 w-5 text-brand-orange" />
-            </div>
-            <div className="h-12 w-12 rounded-xl bg-zinc-900 flex items-center justify-center text-zinc-400 mb-6">
-              <ShieldCheck className="h-6 w-6" />
-            </div>
-            <h3 className="font-display text-xl font-bold text-white uppercase tracking-tight mb-3">
-              Reliable Systems
-            </h3>
-            <p className="font-sans text-sm text-zinc-500 leading-relaxed">
-              Committed to producing highly redundant hosted servers, data backup networks, and resilient business structures.
-            </p>
-          </div>
-
-        </div>
-
-        {/* Highlight quote banner block mimicking Zinle signature branding page features */}
-        <div className="mt-16 bg-gradient-to-r from-zinc-950 to-[#0e0e11] border border-zinc-900 p-8 md:p-12 rounded-3xl relative overflow-hidden" id="about-banner-quote">
-          <div className="absolute -right-24 -bottom-24 h-64 w-64 rounded-full bg-brand-orange/5 blur-3xl pointer-events-none" />
-          <div className="max-w-3xl relative z-10 space-y-6">
-            <HeartHandshake className="h-10 w-10 text-brand-orange" />
-            <p className="font-display text-2xl md:text-3xl font-black text-white leading-tight uppercase tracking-tight">
-              "We believe tech should empower operations, not complicate them. Our solutions build a direct connection to your users."
-            </p>
-            <div className="flex items-center gap-4 pt-2">
-              <div className="h-10 w-10 rounded-full bg-brand-orange/20 overflow-hidden border border-brand-orange/40">
-                <img 
-                  src="/src/assets/images/sandip_portrait_1780393538681.png" 
-                  alt="Sandip Bhattarai"
-                  className="w-full h-full object-cover object-top"
-                  referrerPolicy="no-referrer"
-                />
-              </div>
-              <div>
-                <h4 className="text-white text-sm font-bold">Sandip Bhattarai</h4>
-                <p className="text-zinc-500 text-xs">Principal Executive & IT Founder</p>
-              </div>
+            {/* Text card */}
+            <div className="bg-white rounded-2xl p-7 border border-stone-200 flex flex-col flex-1 justify-between">
+              <p className="text-[14.5px] text-stone-500 leading-relaxed mb-6">
+                We combine creativity, user experience design and strategy to deliver
+                cutting-edge digital solutions that help businesses thrive in a competitive
+                landscape.
+              </p>
+              <button className="self-start inline-flex items-center gap-2 bg-stone-900 text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-stone-700 transition-colors">
+                About us
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path
+                    d="M3 8h10M9 4l4 4-4 4"
+                    stroke="white"
+                    strokeWidth="1.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
         </div>
+      </section>
 
-      </div>
-    </section>
+ 
+    </div>
   );
 }
