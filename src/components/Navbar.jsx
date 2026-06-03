@@ -18,33 +18,30 @@ const Navbar = () => {
           <div className="h-20 flex items-center justify-between">
             {/* Logo - Left Side */}
             <div className="lg:hidden block flex items-center">
-             {/* <a href="#" className="text-white text-lg font-semibold hover:text-gray-300 transition">
-                Home
-              </a> */}
-                <img src="/images/logo.png" alt="Logo" className="h-16 w-auto" />
+              <img src="/images/logo.png" alt="Logo" className="h-16 w-auto" />
             </div>
 
             {/* Desktop Menu - Hidden on Mobile */}
             <nav className="hidden lg:flex items-center gap-14">
-              <a href="#" className="text-white font-medium hover:text-gray-300 transition">
+              <a href="/" className="text-white font-medium hover:text-gray-300 transition">
                 Home
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition">
+              <a href="/about" className="text-gray-300 hover:text-white transition">
                 About
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition">
+              <a href="/works" className="text-gray-300 hover:text-white transition">
                 Works
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition">
+              <a href="/services" className="text-gray-300 hover:text-white transition">
                 Services
               </a>
-              <a href="#" className="text-gray-300 hover:text-white transition">
+              <a href="/blogs" className="text-gray-300 hover:text-white transition">
                 Blogs
               </a>
             </nav>
 
-            {/* Desktop CTA Button */}
-            <button className="hidden lg:flex items-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full hover:bg-white hover:text-black transition">
+            {/* Desktop CTA Button - Added ml-10 to push it further right */}
+            <button className="hidden lg:flex items-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full hover:bg-white hover:text-black transition ml-10">
               Work with us
               <span>→</span>
             </button>
@@ -84,43 +81,43 @@ const Navbar = () => {
           {/* Mobile Menu Content */}
           <div className="flex flex-col pt-24 px-8 gap-6">
             <a 
-              href="#" 
+              href="/" 
               onClick={closeMenu}
               className="text-white text-xl font-medium hover:text-gray-300 transition py-2 border-b border-white/10"
             >
               Home
             </a>
             <a 
-              href="#" 
+              href="/about" 
               onClick={closeMenu}
               className="text-gray-300 text-xl hover:text-white transition py-2 border-b border-white/10"
             >
               About
             </a>
             <a 
-              href="#" 
+              href="/works" 
               onClick={closeMenu}
               className="text-gray-300 text-xl hover:text-white transition py-2 border-b border-white/10"
             >
               Works
             </a>
             <a 
-              href="#" 
+              href="/services" 
               onClick={closeMenu}
               className="text-gray-300 text-xl hover:text-white transition py-2 border-b border-white/10"
             >
               Services
             </a>
             <a 
-              href="#" 
+              href="/blogs" 
               onClick={closeMenu}
               className="text-gray-300 text-xl hover:text-white transition py-2 border-b border-white/10"
             >
               Blogs
             </a>
             
-            {/* Mobile CTA Button */}
-            <button className="mt-6 flex items-center justify-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full hover:bg-white hover:text-black transition w-full">
+            {/* Mobile CTA Button - Changed mt-6 to mt-12 to push it further down */}
+            <button className="mt-12 flex items-center justify-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full hover:bg-white hover:text-black transition w-full">
               Work with us
               <span>→</span>
             </button>

@@ -24,8 +24,9 @@ export default function Hero() {
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           {/* LEFT CONTENT */}
           <div className="lg:col-span-7 text-center lg:text-left mt-12  ">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[4.5rem] font-black uppercase tracking-wide leading-tight text-white">
-              Driving Growth Through Strategy and Technology
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[3.5rem]  font-semibold uppercase tracking-wide leading-tight text-white">
+              Driving Growth Through Strategy <br/>
+               and Technology
             </h1>
 
             <div className="mt-8 flex flex-col sm:flex-row gap-5 sm:gap-6 items-start lg:items-start">
@@ -37,8 +38,8 @@ export default function Hero() {
                 <ArrowDown className="h-4 w-4 animate-bounce" />
               </a>
 
-              <div className="space-y-5 max-w-2xl">
-                <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-300">
+              <div className="space-y-5 max-w-3xl">
+                <p className="text-sm sm:text-base md:text-lg leading-relaxed text-gray-300 max-w-md mx-auto">
                   With 12+ years of experience in IT & Business Services,
                   Sandip Bhattarai has helped enterprises grow by delivering
                   functional, secure, and cloud-ready digital solutions. We
@@ -60,9 +61,9 @@ export default function Hero() {
           </div>
 
           {/* RIGHT CONTENT */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+          <div className="lg:col-span-5 flex justify-center lg:justify-end mt-18">
             <img
-              src="/images/logo.png"
+              src="/images/hero.jpeg"
               alt="Hero Section"
               className="
                 w-full

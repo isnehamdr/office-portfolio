@@ -41,16 +41,16 @@ const journeySteps = [
 // ── Placeholder image components ──────────────────────────────────────────────
 function ImgMainPlaceholder() {
   return (
-    <div className="w-full h-full flex items-center justify-center ">
-      <img src="/images/about1.png" alt="" />
+    <div className="w-full h-full flex items-center justify-center">
+      <img src="/images/about1.png" alt="" className="w-full h-full object-cover" />
     </div>
   );
 }
 
 function ImgSecondaryPlaceholder() {
   return (
-    <div className="w-full h-full flex items-center justify-center ">
-      <img src="/images/about2.png" alt="" />
+    <div className="w-full h-full flex items-center justify-center">
+      <img src="/images/about2.png" alt="" className="w-full h-full object-cover" />
     </div>
   );
 }
@@ -62,7 +62,9 @@ function TimelineItem({ step, index }) {
 
   useEffect(() => {
     const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
       { threshold: 0.15 }
     );
     if (ref.current) obs.observe(ref.current);
@@ -95,7 +97,7 @@ function TimelineItem({ step, index }) {
       </span>
 
       {/* Heading */}
-      <h3 className=" text-xl text-stone-900 mb-2 leading-snug">{step.title}</h3>
+      <h3 className="text-xl text-stone-900 mb-2 leading-snug">{step.title}</h3>
 
       {/* Body */}
       <p className="text-sm text-stone-900 leading-relaxed max-w-2xl">{step.body}</p>
@@ -104,80 +106,47 @@ function TimelineItem({ step, index }) {
 }
 
 // ── Main Component ─────────────────────────────────────────────────────────────
-export default function SandipJourney() {
+export default function About() {
   return (
-    <div className="min-h-screen bg-white ">
-
+    <div className="min-h-screen bg-[#f7f6f5]">
       {/* ── INTRO SECTION ── */}
-      <section className=" px-6 md:px-24 pt-16 pb-10">
+      <section className="px-6 md:px-24 pt-16 pb-2">
         {/* Eyebrow */}
         <div className="flex items-center gap-3 mb-5">
           <span className="block w-7 h-px bg-stone-800" />
-          <span className="text-lg font-semibold tracking-[0.18em] uppercase text-stone-800">
+          <span className="sm:text-lg text-sm font-semibold tracking-[0.10em] uppercase text-stone-800">
             Who We Are
           </span>
         </div>
 
-        <h2 className=" text-3xl md:text-4xl text-stone-900 leading-[62px] max-w-2xl mb-4">
+        <h2 className="text-2xl md:text-4xl text-stone-900  leading-snug md:leading-[52px] max-w-2xl mb-4">
           We are a dynamic agency dedicated to crafting innovative digital solutions
         </h2>
-       
       </section>
 
       {/* ── SPLIT LAYOUT ── */}
-      <section className="px-6 md:px-24 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-
-          {/* Left column */}
-          <div className="flex flex-col gap-5">
-            {/* Main image */}
-            <div className="relative rounded-2xl overflow-hidden h-72 md:h-80 bg-stone-200">
+      <section className="px-6 md:px-24 sm:pb-20 pb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-stretch">
+          
+          {/* Left column (First Image) - Wider */}
+          <div className="md:col-span-3 flex flex-col h-full">
+            <div className="relative rounded-2xl overflow-hidden h-72 md:min-h-[70vh]  flex-1">
               <ImgMainPlaceholder />
-              {/* Badge */}
-              {/* <div className="absolute bottom-4 left-4 bg-white rounded-full px-4 py-2 flex items-center gap-2 shadow-md">
-                <div className="flex">
-                  {["bg-stone-400", "bg-stone-300", "bg-stone-200"].map((c, i) => (
-                    <span
-                      key={i}
-                      className={`w-6 h-6 rounded-full border-2 border-white ${c} ${i !== 0 ? "-ml-2" : ""}`}
-                    />
-                  ))}
-                </div>
-                <span className="text-[11px] font-medium text-stone-700 whitespace-nowrap">
-                  Trusted by hundreds
-                </span>
-              </div> */}
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              {[
-                { num: "12+", label: "Years of experience" },
-                { num: "2", label: "Offices in Nepal" },
-              ].map((s) => (
-                <div
-                  key={s.label}
-                  className="bg-white rounded-2xl p-5 border border-stone-200"
-                >
-                  <div className=" text-4xl text-stone-900 leading-none mb-1">
-                    {s.num}
-                  </div>
-                  <div className="text-xs text-stone-400 font-medium">{s.label}</div>
-                </div>
-              ))}
             </div>
           </div>
 
-          {/* Right column */}
-          <div className="flex flex-col gap-5">
-            {/* Secondary image */}
-            <div className="rounded-2xl overflow-hidden h-52 md:h-56 bg-stone-300">
+          {/* Right column (Second Image + Text Card) - Narrower */}
+          {/* Changed gap-5 to gap-4 to fix the spacing between the image and text card */}
+          <div className="md:col-span-2 flex flex-col gap-4 h-full"> 
+            
+            {/* Secondary image - Increased height to make it bigger */}
+            <div className="rounded-2xl overflow-hidden h-64 md:h-86  flex-shrink-0">
               <ImgSecondaryPlaceholder />
             </div>
 
-            {/* Text card */}
-            <div className="bg-white rounded-2xl p-7 border border-stone-200 flex flex-col flex-1 justify-between">
-              <p className="text-[14.5px] text-stone-500 leading-relaxed mb-6">
+            {/* Text card - Removed border classes */}
+            <div className=" p-2 flex flex-col flex-1 justify-between">
+              <p className="text-md text-stone-900 leading-relaxed mb-4">
                 We combine creativity, user experience design and strategy to deliver
                 cutting-edge digital solutions that help businesses thrive in a competitive
                 landscape.
@@ -198,8 +167,6 @@ export default function SandipJourney() {
           </div>
         </div>
       </section>
-
- 
     </div>
   );
 }

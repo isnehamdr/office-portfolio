@@ -1,120 +1,122 @@
-import React from 'react';
-import { ArrowUpRight, BookOpen, Clock, Calendar } from 'lucide-react';
+const featuredArticle = {
+  id: 1,
+  date: "May 29, 2025",
+  title: "Strategies to boost presence and scale your business",
+  excerpt:
+    "We explore the essential strategies that businesses need to adopt in 2025 to stay ahead of the curve.",
+  image:
+    "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80",
+  imageAlt: "Woman working on laptop in a cozy home office",
+};
+
+const smallArticles = [
+  {
+    id: 2,
+    date: "Jun 18, 2025",
+    title: "Strategies to grow brand and build lasting engagement",
+    image:
+      "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400&q=80",
+    imageAlt: "Team collaborating around a table",
+  },
+  {
+    id: 3,
+    date: "May 24, 2025",
+    title: "Driving brand success with social media marketing",
+    image:
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&q=80",
+    imageAlt: "Woman using laptop for social media",
+  },
+  {
+    id: 4,
+    date: "May 24, 2025",
+    title: "Tips and tools to amplify your brand's online presence.",
+    image:
+      "https://images.unsplash.com/photo-1552581234-26160f608093?w=400&q=80",
+    imageAlt: "Business presentation in office",
+  },
+];
+
+function SmallCard({ article }) {
+  return (
+    // FIX: Changed to flex-row so the image is strictly on the left and text on the right
+    <div className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-row cursor-pointer group h-full">
+      {/* Image: Left side */}
+      <div className="w-32 sm:w-40 flex-shrink-0 overflow-hidden">
+        <img
+          src={article.image}
+          alt={article.imageAlt}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+      
+      {/* Text: Right side */}
+      <div className="p-4 sm:p-5 flex flex-col justify-center flex-1 text-left">
+        <p className="text-gray-400 text-xs mb-2">{article.date}</p>
+        <h3 className="text-gray-900 text-sm sm:text-base font-semibold leading-snug group-hover:text-gray-600 transition-colors">
+          {article.title}
+        </h3>
+      </div>
+    </div>
+  );
+}
 
 export default function Blogs() {
-  const blogs = [
-    {
-      id: 'blog-1',
-      title: 'Digital Journeys: The Tech-Powered Revolution of Online Travel Booking',
-      excerpt: 'How modern application layers, cloud inventories, and OTA orchestrations are transforming how we schedule global accommodation and local tours.',
-      date: 'August 16, 2024',
-      readTime: '6 min read',
-      category: 'Travel Technology',
-      link: 'https://sandipbhattarai.com.np/blog/digital-journeys-the-tech-powered-revolution-of-online-travel-booking'
-    },
-    {
-      id: 'blog-2',
-      title: 'Cyber Hygiene – Practices to protect the health of Digital Assets',
-      excerpt: 'Important daily habits, firewalls discipline, server hygiene, and encryption strategies required to protect cloud data from ransomware and unauthorized intrusion.',
-      date: 'May 23, 2021',
-      readTime: '5 min read',
-      category: 'Cybersecurity',
-      link: 'https://sandipbhattarai.com.np/blog/cyber-hygiene-practices-to-protect-the-health-of-digital-assets'
-    },
-    {
-      id: 'blog-3',
-      title: 'Can AI chatbots completely replace customer service representatives?',
-      excerpt: 'An objective analysis of modern LLM capabilities and customer service needs. Discover why human empathy remains critical alongside generative bots.',
-      date: 'April 23, 2021',
-      readTime: '7 min read',
-      category: 'Artificial Intelligence',
-      link: 'https://sandipbhattarai.com.np/blog/can-ai-chatbots-completely-replace-customer-service-representatives'
-    }
-  ];
-
   return (
-    <section className="relative bg-[#0c0c0e] px-6 py-24 md:px-12 lg:px-20 border-t border-zinc-900" id="blogs">
-      {/* Background patterns */}
-      <div className="absolute inset-y-0 right-0 border-l border-zinc-900/30 pointer-events-none" />
+    <div className="w-full py-16 sm:py-24" style={{ backgroundColor: "#f7f6f5" }}>
+      <div className="px-5 sm:px-8 lg:px-24">
 
-      <div className="mx-auto max-w-7xl relative z-10">
-        
-        {/* Section Title */}
-        <div className="mb-16 md:flex md:items-end md:justify-between">
-          <div>
-            <span className="text-[#6a7c64] text-xs font-bold tracking-widest uppercase flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#6a7c64]" />
-              LATEST WRITINGS
-            </span>
-            <h2 className="font-display text-4xl lg:text-5xl font-black text-white uppercase tracking-tight mt-4">
-              Insights & <br />
-              <span className="text-[#6a7c64]">Expert Articles</span>
-            </h2>
+        {/* Section label */}
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-lg font-semibold tracking-widest uppercase text-gray-500">
+            Our Blogs
+          </span>
+        </div>
+
+        {/* Section heading */}
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">
+          Latest Articles
+        </h2>
+
+        {/* ── Featured card ── */}
+        <div className="bg-white rounded-2xl overflow-hidden mb-8 flex flex-col sm:flex-row">
+          {/* Left – image */}
+          <div className="w-full sm:w-1/2 flex-shrink-0 overflow-hidden h-64 sm:h-auto">
+            <img
+              src={featuredArticle.image}
+              alt={featuredArticle.imageAlt}
+              className="w-full h-full object-cover"
+            />
           </div>
-          <div className="mt-4 md:mt-0">
-            <a 
-              href="https://sandipbhattarai.com.np/blogs" 
-              target="_blank" 
-              className="group inline-flex items-center space-x-2 text-zinc-400 font-bold tracking-wider hover:text-white transition-colors text-sm uppercase"
+
+          {/* Right – content */}
+          <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10 flex-1">
+            <p className="text-gray-400 text-sm mb-3">{featuredArticle.date}</p>
+            <h3 className="text-gray-900 text-xl sm:text-5xl font-semibold leading-[52px] mb-4">
+              {featuredArticle.title}
+            </h3>
+            <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-6">
+              {featuredArticle.excerpt}
+            </p>
+            <a
+              href="#"
+              className="inline-flex items-center gap-2 text-sm font-medium text-gray-900 border-b border-gray-900 pb-0.5 w-fit hover:opacity-70 transition-opacity"
             >
-              <span>Explore All Blogs</span>
-              <ArrowUpRight className="h-4 w-4 text-zinc-500 group-hover:text-brand-orange group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+              Read Article 
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
             </a>
           </div>
         </div>
 
-        {/* Blogs List Layout matching Zinle's stylish row elements */}
-        <div className="flex flex-col space-y-6" id="blog-feeds-rows">
-          {blogs.map((b, idx) => (
-            <a
-              key={b.id}
-              href={b.link}
-              target="_blank"
-              rel="noreferrer"
-              className="group relative flex flex-col md:grid md:grid-cols-12 gap-6 items-start md:items-center bg-zinc-950/40 hover:bg-[#0e0e11] border border-zinc-900 hover:border-zinc-800 rounded-3xl p-6 md:p-8 transition-all duration-300"
-              id={`blog-item-${b.id}`}
-            >
-              {/* Category */}
-              <div className="md:col-span-2" id={`blog-category-${idx}`}>
-                <span className="inline-block text-[10px] font-bold tracking-widest text-[#6a7c64] uppercase border border-[#6a7c64]/20 bg-[#6a7c64]/5 px-3 py-1 rounded-full">
-                  {b.category}
-                </span>
-              </div>
-
-              {/* Title & Excerpt */}
-              <div className="md:col-span-7 space-y-2" id={`blog-title-excerpt-${idx}`}>
-                <h3 className="font-display text-xl sm:text-2xl font-black text-zinc-100 group-hover:text-brand-orange uppercase leading-tight tracking-tight transition-colors duration-300">
-                  {b.title}
-                </h3>
-                <p className="font-sans text-sm text-zinc-500 font-light leading-relaxed">
-                  {b.excerpt}
-                </p>
-              </div>
-
-              {/* Meta: DateTime & Micro stats */}
-              <div className="md:col-span-2 flex flex-row md:flex-col items-center md:items-start gap-4 md:gap-1.5 text-xs text-zinc-650 font-mono" id={`blog-meta-${idx}`}>
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-3.5 w-3.5 text-zinc-600" />
-                  <span>{b.date}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock className="h-3.5 w-3.5 text-zinc-600" />
-                  <span>{b.readTime}</span>
-                </div>
-              </div>
-
-              {/* Link Arrow on Right side */}
-              <div className="absolute top-6 right-6 md:static md:col-span-1 md:flex md:justify-end" id={`blog-link-arrow-${idx}`}>
-                <div className="h-10 w-10 border border-zinc-800 bg-zinc-900 rounded-full flex items-center justify-center text-zinc-500 group-hover:text-white group-hover:bg-brand-orange group-hover:border-brand-orange transition-all duration-350">
-                  <ArrowUpRight className="h-4 w-4" />
-                </div>
-              </div>
-
-            </a>
+        {/* ── Small cards row ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {smallArticles.map((article) => (
+            <SmallCard key={article.id} article={article} />
           ))}
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }

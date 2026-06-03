@@ -14,7 +14,7 @@ const journeySteps = [
   {
     tag: "The Founding",
     title: "Starting from Scratch",
-    body: "With this mission in mind, Sandip, along with his friend Ajit Singdan, established S.A I.T Solution and Trade Concern Pvt. Ltd. in Kathmandu. The early days were far from easy — they started in a humble residential flat. However, their determination and commitment to excellence gradually set them apart in the industry.",
+    body: "With this mission in mind, Sandip established S.A I.T Solution and Trade Concern Pvt. Ltd. in Kathmandu. The early days were far from easy — they started in a humble residential flat. However, their determination and commitment to excellence gradually set them apart in the industry.",
   },
   {
     tag: "Growth — 2019",
@@ -160,7 +160,7 @@ export default function Journey() {
             <h2 className="text-4xl md:text-6xl text-stone-900 leading-none">
               How my journey
               <br />
-              <em className=" text-stone-900">started</em>
+              <div className=" text-stone-900">started</div>
             </h2>
             <p className="text-lg text-stone-900 leading-relaxed md:text-right md:max-w-lg">
               From hospitality to leading IT solutions across Nepal — a story of
