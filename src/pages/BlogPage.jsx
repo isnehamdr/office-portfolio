@@ -1,10 +1,12 @@
 export default function BlogPage() {
   return (
+    <>
+    <div className="overflow-x-hidden">
     <div className="min-h-screen w-full flex items-center mt-16" style={{ backgroundColor: "#f7f6f5" }}>
       <div className=" px-6 sm:px-10 lg:px-24 py-14 sm:py-20">
 
         {/* ── Section heading ── */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-12 sm:mb-16">
+        <h1 className="text-4xl sm:text-5xl  font-semibold text-gray-900 mb-12 sm:mb-16 tracking-wide">
           Latest Articles
         </h1>
 
@@ -12,21 +14,21 @@ export default function BlogPage() {
         <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-0">
 
           {/* LEFT — date + title + excerpt + CTA */}
-          <div className="flex flex-col lg:flex-row flex-1 gap-8 lg:gap-0 lg:pr-12">
+          <div className="flex flex-col lg:flex-row flex-1 gap-8 lg:gap-18 lg:pr-8">
 
             {/* Date column */}
             <div className="lg:w-48 xl:w-36 flex-shrink-0">
-              <span className="text-gray-400 text-sm">Jun 18, 2025</span>
+              <span className="text-gray-700 text-sm">Jun 18, 2025</span>
             </div>
 
             {/* Text column */}
-            <div className="flex flex-col justify-between flex-1">
+            <div className="flex flex-col justify-between flex-1 ">
               {/* Title */}
               <div>
-                <h2 className="text-gray-900 text-2xl sm:text-3xl font-semibold leading-snug mb-4">
+                <h2 className="text-gray-900 text-2xl  font-normal leading-snug mb-4">
                   Strategies to grow brand and build lasting engagement
                 </h2>
-                <p className="text-gray-500 text-sm sm:text-base leading-relaxed max-w-sm">
+                <p className="text-gray-700 text-sm sm:text-lg leading-relaxed max-w-sm">
                   This effective social media marketing strategies for 2025 that will help you build loyal following, &amp; drive conversions.
                 </p>
               </div>
@@ -55,5 +57,7 @@ export default function BlogPage() {
         </div>
       </div>
     </div>
+    </div>
+    </>
   );
 }

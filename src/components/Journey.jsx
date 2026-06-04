@@ -157,7 +157,7 @@ export default function Journey() {
 
           {/* Header */}
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
-            <h2 className="text-4xl md:text-6xl text-stone-900 leading-none">
+            <h2 className="text-4xl md:text-5xl text-stone-900 leading-none">
               How my journey
               <br />
               <div className=" text-stone-900">started</div>

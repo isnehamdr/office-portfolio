@@ -1,5 +1,48 @@
-// ─── Inline SVG logos matching the originals as closely as possible ───
+import { useState, useEffect, useRef } from "react";
 
+// ── Reveal hook (fires once) ──────────────────────────────────────────────────
+function useReveal(threshold = 0.1) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  return [ref, visible];
+}
+
+// ── Style builder ─────────────────────────────────────────────────────────────
+function revealStyle(
+  visible,
+  { direction = "up", distance = 40, delay = 0, duration = 1.1 } = {}
+) {
+  const hidden = {
+    up:    `translateY(${distance}px)`,
+    left:  `translateX(-${distance}px)`,
+    right: `translateX(${distance}px)`,
+  };
+  return {
+    opacity:         visible ? 1 : 0,
+    transform:       visible ? "translate(0,0)" : hidden[direction],
+    transition:      `opacity ${duration}s cubic-bezier(0.16,1,0.3,1), transform ${duration}s cubic-bezier(0.16,1,0.3,1)`,
+    transitionDelay: `${delay}s`,
+  };
+}
+
+// ─── SVG Logos ────────────────────────────────────────────────────────────────
 function LogoCloudWatch() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -10,7 +53,6 @@ function LogoCloudWatch() {
     </svg>
   );
 }
-
 function LogoCapsule() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -20,7 +62,6 @@ function LogoCapsule() {
     </svg>
   );
 }
-
 function LogoHourglass() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -30,25 +71,15 @@ function LogoHourglass() {
     </svg>
   );
 }
-
 function LogoNietzsche() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
       {[4,6,8,10,8,6,4].map((h, i) => (
-        <rect
-          key={i}
-          x={4 + i * 3.2}
-          y={14 - h / 2}
-          width="2.2"
-          height={h}
-          rx="1"
-          fill="#2E7D32"
-        />
+        <rect key={i} x={4 + i * 3.2} y={14 - h / 2} width="2.2" height={h} rx="1" fill="#2E7D32"/>
       ))}
     </svg>
   );
 }
-
 function LogoAcmeCorp() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -57,7 +88,6 @@ function LogoAcmeCorp() {
     </svg>
   );
 }
-
 function LogoEpicurious() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -67,7 +97,6 @@ function LogoEpicurious() {
     </svg>
   );
 }
-
 function LogoGlobalBank() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -79,7 +108,6 @@ function LogoGlobalBank() {
     </svg>
   );
 }
-
 function LogoLogoipsum() {
   return (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -90,6 +118,7 @@ function LogoLogoipsum() {
   );
 }
 
+// ── Data ──────────────────────────────────────────────────────────────────────
 const clients = [
   { id: 1, logo: <LogoCloudWatch />, name: "CloudWatch", nameColor: "text-gray-700" },
   { id: 2, logo: <LogoCapsule />,    name: "Capsule",    nameColor: "text-purple-700" },
@@ -101,12 +130,42 @@ const clients = [
   { id: 8, logo: <LogoLogoipsum />,  name: "Logoipsum",  nameColor: "text-green-700" },
 ];
 
+// ── Single logo cell — observes itself ────────────────────────────────────────
 function ClientLogo({ client, colIndex, rowIndex, totalCols }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const isLastCol = colIndex === totalCols - 1;
   const isLastRow = rowIndex === 1;
 
+  // Stagger: each cell delays by its grid position
+  const delay = rowIndex * 0.12 + colIndex * 0.1;
+
   return (
     <div
+      ref={ref}
+      style={revealStyle(visible, {
+        direction: "up",
+        distance: 30,
+        delay,
+        duration: 1.0,
+      })}
       className={`
         flex items-center justify-center gap-2.5 py-12 px-4
         ${!isLastCol ? "border-r border-gray-300" : ""}
@@ -122,26 +181,60 @@ function ClientLogo({ client, colIndex, rowIndex, totalCols }) {
   );
 }
 
+// ── Main section ──────────────────────────────────────────────────────────────
 export default function FeaturedClients() {
   const rows = [clients.slice(0, 4), clients.slice(4, 8)];
   const totalCols = 4;
 
+  const [headingRef, headingVisible] = useReveal(0.15);
+  const [bodyRef,    bodyVisible]    = useReveal(0.15);
+  const [ctaRef,     ctaVisible]     = useReveal(0.15);
+  const [mobileRef,  mobileVisible]  = useReveal(0.1);
+
   return (
-    <div className="w-full py-16 sm:py-24" style={{ backgroundColor: "#f2f0ed" }}>
-      <div className="px-6 sm:px-10 lg:px-16">
+    <div className="w-full py-12 sm:py-24" style={{ backgroundColor: "#f2f0ed" }}>
+      <div className="px-5 sm:px-10 lg:px-16">
         <div className="flex flex-col lg:flex-row gap-10 lg:gap-0 items-stretch">
 
-          {/* ── LEFT — text ── */}
-          <div className="lg:w-[340px] xl:w-[380px] flex-shrink-0 flex flex-col justify-center lg:pr-12 min-h-[400px] lg:min-h-0">
-            <h2 className="text-gray-900 text-3xl sm:text-4xl font-bold leading-tight mb-4">
+          {/* ── LEFT — text panel ── */}
+          <div className="lg:w-[340px] xl:w-[380px] flex-shrink-0 flex flex-col justify-center lg:pr-12 min-h-[200px] lg:min-h-0">
+
+            <h2
+              ref={headingRef}
+              className="text-gray-900 text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight mb-4"
+              style={revealStyle(headingVisible, {
+                direction: "left",
+                distance: 32,
+                duration: 1.05,
+              })}
+            >
               Features Clients
             </h2>
-            <p className="text-gray-500 text-sm sm:text-base leading-relaxed mb-8">
+
+            <p
+              ref={bodyRef}
+              className="text-gray-500 text-sm sm:text-base leading-relaxed mb-8"
+              style={revealStyle(bodyVisible, {
+                direction: "left",
+                distance: 28,
+                delay: 0.12,
+                duration: 1.05,
+              })}
+            >
               We work closely with our clients to create solutions that are not just innovative.
             </p>
-            <div>
-              <button className="inline-flex items-center gap-2 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors text-sm font-medium px-6 py-3 rounded-full">
-                Work With us 
+
+            <div
+              ref={ctaRef}
+              style={revealStyle(ctaVisible, {
+                direction: "left",
+                distance: 24,
+                delay: 0.22,
+                duration: 1.0,
+              })}
+            >
+              <button className="inline-flex items-center gap-2 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full">
+                Work With us
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -149,8 +242,7 @@ export default function FeaturedClients() {
             </div>
           </div>
 
-          {/* ── RIGHT — logo grid ── */}
-          {/* Desktop: 4-col grid with dividers */}
+          {/* ── RIGHT — desktop logo grid (sm+) ── */}
           <div className="flex-1 w-full hidden sm:block border-l border-gray-300">
             {rows.map((row, rowIndex) => (
               <div key={rowIndex} className="grid grid-cols-4">
@@ -167,8 +259,17 @@ export default function FeaturedClients() {
             ))}
           </div>
 
-          {/* Mobile: 2-col grid, no dividers */}
-          <div className="w-full grid grid-cols-2 gap-4 sm:hidden">
+          {/* ── Mobile logo grid (2-col) ── */}
+          <div
+            ref={mobileRef}
+            className="w-full grid grid-cols-2 gap-3 sm:hidden"
+            style={revealStyle(mobileVisible, {
+              direction: "up",
+              distance: 36,
+              delay: 0.1,
+              duration: 1.0,
+            })}
+          >
             {clients.map((client) => (
               <div
                 key={client.id}

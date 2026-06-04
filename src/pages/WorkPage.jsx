@@ -53,14 +53,14 @@ function Tag({ label }) {
 function ProjectCard({ project }) {
   return (
     // Added 'group' class to the main container to trigger child hover effects
-    <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col h-full group">
+    <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col h-full group ">
       
       {/* Text block: Added group-hover:bg-black */}
       <div className="px-4 sm:px-6  flex-1 flex flex-col group-hover:bg-black transition-colors duration-300">
-        <h3 className="text-2xl sm:text-3xl mt-8 font-bold text-gray-900 group-hover:text-white mb-2 transition-colors duration-300">
+        <h3 className="text-xl sm:text-2xl mt-8 font-normal text-gray-900 group-hover:text-white mb-2 transition-colors duration-300">
           {project.title}
         </h3>
-        <p className="text-base sm:text-lg text-gray-600 group-hover:text-white/80 leading-relaxed mb-4 transition-colors duration-300">
+        <p className="text-base sm:text-lg text-gray-700 group-hover:text-white/80 leading-relaxed mb-4 transition-colors duration-300">
           {project.description}
         </p>
         <div className="flex flex-wrap gap-2 mt-auto">
@@ -86,12 +86,14 @@ function ProjectCard({ project }) {
 
 export default function WorkPage() {
   return (
+    <>
+    <div className="overflow-x-hidden">
     <div className="min-h-screen bg-[#f7f6f5] ">
       {/* Nav */}
       
       {/* Main content */}
       <main className="px-4 sm:px-12 md:px-24 pb-16 py-24 mt-12">
-        <h1 className="text-2xl sm:text-5xl font-bold text-gray-900 mt-4 mb-6 sm:mb-8">
+        <h1 className="text-2xl sm:text-5xl font-normal text-gray-900 mt-4 mb-6 sm:mb-16">
           Selected Projects
         </h1>
 
@@ -113,5 +115,7 @@ export default function WorkPage() {
         </div>
       </main>
     </div>
+    </div>
+    </>
   );
 }
