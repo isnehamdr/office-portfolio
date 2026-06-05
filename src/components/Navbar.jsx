@@ -1,215 +1,179 @@
-import React, { useState, useEffect } from "react";
-// ✅ Import NavLink alongside Link
-import { Link, NavLink, useLocation } from "react-router-dom"; 
+import React, { useEffect, useState } from "react";
+import { ArrowRight, Menu, X } from "lucide-react";
+import { Link, NavLink, useLocation } from "react-router-dom";
+
+const navLinks = [
+  { to: "/", label: "Home", end: true },
+  { to: "/about", label: "About" },
+  { to: "/works", label: "Works" },
+  { to: "/services", label: "Services" },
+  { to: "/blogs", label: "Blogs" },
+];
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  
-  const location = useLocation();
+  const [isAtTop, setIsAtTop] = useState(() => window.scrollY < 10);
 
-  // ✅ FIX 1: Scroll to top whenever the route changes
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+  const useLightText = isHomePage && isAtTop;
+
   useEffect(() => {
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0);
+    setIsAtTop(true);
+    setIsVisible(true);
+    setIsMenuOpen(false);
   }, [location.pathname]);
 
-  // 2. Handle Scroll Behavior (Hide on scroll down, Show on scroll up)
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
     const controlNavbar = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-      
-      setLastScrollY(currentScrollY);
+      if (ticking) return;
+
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.scrollY;
+        const atTop = currentScrollY < 10;
+
+        setIsAtTop(atTop);
+        setIsVisible(atTop || currentScrollY < lastScrollY || currentScrollY <= 50);
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+      });
+
+      ticking = true;
     };
 
+    controlNavbar();
     window.addEventListener("scroll", controlNavbar, { passive: true });
     return () => window.removeEventListener("scroll", controlNavbar);
-  }, [lastScrollY]);
+  }, [location.pathname]);
 
-  // 3. Handle Body Scroll Lock when Mobile Menu is Open
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+    document.body.style.overflow = isMenuOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
   }, [isMenuOpen]);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
+  const navBgClass = isAtTop ? "bg-transparent" : "bg-[#f7f6f5] backdrop-blur-md shadow-sm";
+  const navTextClass = useLightText ? "text-white" : "text-black";
+  const navLinkClass = useLightText
+    ? "text-white hover:text-white"
+    : "text-black hover:text-black";
+  const ctaBorderClass = useLightText ? "border-white/25" : "border-black/20";
+  const ctaHoverClass = useLightText
+    ? "hover:bg-white hover:text-black"
+    : "hover:bg-black hover:text-white";
 
   return (
     <>
-      <header 
-        className={`fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-[#0f0f0f]/95 backdrop-blur-md transition-transform duration-300 ease-in-out ${
+      <header
+        className={`fixed top-0 left-0 z-50 w-full ${navBgClass} transition-all duration-300 ease-in-out ${
           isVisible ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-          <div className="h-20 flex items-center justify-between">
-            
-            {/* LEFT SIDE: Logo + Desktop Navigation */}
+        <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
+          <div className="flex h-20 items-center justify-between">
             <div className="flex items-center gap-8 lg:gap-14">
-              <div className="flex items-center">
-                <Link to="/" className="text-white text-2xl font-normal tracking-wide uppercase">
-                  Sandip
-                </Link>
-              </div>
+              <Link
+                to="/"
+                className={`${navTextClass} text-2xl font-normal uppercase tracking-wide transition-colors duration-300`}
+              >
+                Sandip
+              </Link>
 
-              <nav className="hidden lg:flex items-center gap-8">
-                {/* ✅ FIX 2: Using NavLink for native active state handling */}
-                <NavLink 
-                  to="/" 
-                  end // 'end' prop ensures it ONLY matches exactly "/"
-                  className={({ isActive }) => 
-                    isActive ? "text-white font-medium" : "text-gray-300 hover:text-white transition"
-                  }
-                >
-                  Home
-                </NavLink>
-                <NavLink 
-                  to="/about" 
-                  className={({ isActive }) => 
-                    isActive ? "text-white font-medium" : "text-gray-300 hover:text-white transition"
-                  }
-                >
-                  About
-                </NavLink>
-                <NavLink 
-                  to="/works" 
-                  className={({ isActive }) => 
-                    isActive ? "text-white font-medium" : "text-gray-300 hover:text-white transition"
-                  }
-                >
-                  Works
-                </NavLink>
-                <NavLink 
-                  to="/services" 
-                  className={({ isActive }) => 
-                    isActive ? "text-white font-medium" : "text-gray-300 hover:text-white transition"
-                  }
-                >
-                  Services
-                </NavLink>
-                <NavLink 
-                  to="/blogs" 
-                  className={({ isActive }) => 
-                    isActive ? "text-white font-medium" : "text-gray-300 hover:text-white transition"
-                  }
-                >
-                  Blogs
-                </NavLink>
+              <nav className="hidden items-center gap-8 lg:flex">
+                {navLinks.map(({ to, label, end }) => (
+                  <NavLink
+                    key={to}
+                    to={to}
+                    end={end}
+                    className={({ isActive }) =>
+                      `${navLinkClass} transition-colors duration-200 ${
+                        isActive ? "font-medium" : ""
+                      }`
+                    }
+                  >
+                    {label}
+                  </NavLink>
+                ))}
               </nav>
             </div>
 
-            {/* RIGHT SIDE: Desktop CTA + Mobile Hamburger */}
             <div className="flex items-center gap-4">
-              <Link 
-                to="/contact" 
-                className="hidden cursor-pointer lg:flex items-center gap-3 border border-white/20 text-white px-8 py-3 rounded-full hover:bg-white hover:text-black transition"
+              <Link
+                to="/contact"
+                className={`hidden cursor-pointer items-center gap-3 rounded-full border ${ctaBorderClass} ${navTextClass} ${ctaHoverClass} px-8 py-3 transition-all duration-200 lg:flex`}
               >
                 Work with us
-                <span>→</span>
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
 
-              <button 
-                onClick={toggleMenu} 
-                className="lg:hidden text-white cursor-pointer text-3xl focus:outline-none z-50 relative p-2 hover:text-gray-300 transition"
+              <button
+                onClick={() => setIsMenuOpen((prev) => !prev)}
+                className={`relative z-50 cursor-pointer p-2 text-3xl ${navTextClass} transition-colors duration-300 focus:outline-none lg:hidden`}
                 aria-label="Toggle menu"
+                aria-expanded={isMenuOpen}
               >
-                {isMenuOpen ? "✕" : "☰"}
+                {isMenuOpen ? (
+                  <X className="h-7 w-7" aria-hidden="true" />
+                ) : (
+                  <Menu className="h-7 w-7" aria-hidden="true" />
+                )}
               </button>
             </div>
-
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
-      <div 
+      <div
         className={`fixed inset-0 z-40 transition-all duration-300 ease-in-out ${
-          isMenuOpen ?
-          
-           "visible" : "invisible"
+          isMenuOpen ? "visible" : "invisible"
         }`}
       >
-        <div 
+        <div
           className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-500 ${
             isMenuOpen ? "opacity-100" : "opacity-0"
           }`}
           onClick={closeMenu}
         />
 
-        <div 
-          className={`absolute top-0 right-0 h-full w-full sm:w-96 bg-[#0f0f0f] shadow-2xl transform transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        <div
+          className={`absolute right-0 top-0 h-full w-full transform bg-[#0f0f0f] shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] sm:w-96 ${
             isMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
-          <div className="flex flex-col pt-24 px-8 gap-6">
-            {/* ✅ FIX 3: NavLink applied to mobile menu as well */}
-            <NavLink 
-              to="/" 
-              end
-              onClick={closeMenu}
-              className={({ isActive }) => 
-                `text-xl py-2 border-b border-white/10 ${isActive ? "text-white font-medium" : "text-gray-300 hover:text-white transition"}`
-              }
-            >
-              Home
-            </NavLink>
-            <NavLink 
-              to="/about" 
-              onClick={closeMenu}
-              className={({ isActive }) => 
-                `text-xl py-2 border-b border-white/10 ${isActive ? "text-white font-medium" : "text-gray-300 hover:text-white transition"}`
-              }
-            >
-              About
-            </NavLink>
-            <NavLink 
-              to="/works" 
-              onClick={closeMenu}
-              className={({ isActive }) => 
-                `text-xl py-2 border-b border-white/10 ${isActive ? "text-white font-medium" : "text-gray-300 hover:text-white transition"}`
-              }
-            >
-              Works
-            </NavLink>
-            <NavLink 
-              to="/services" 
-              onClick={closeMenu}
-              className={({ isActive }) => 
-                `text-xl py-2 border-b border-white/10 ${isActive ? "text-white font-medium" : "text-gray-300 hover:text-white transition"}`
-              }
-            >
-              Services
-            </NavLink>
-            <NavLink 
-              to="/blogs" 
-              onClick={closeMenu}
-              className={({ isActive }) => 
-                `text-xl py-2 border-b border-white/10 ${isActive ? "text-white font-medium" : "text-gray-300 hover:text-white transition"}`
-              }
-            >
-              Blogs
-            </NavLink>
+          <div className="flex flex-col gap-6 px-8 pt-24">
+            {navLinks.map(({ to, label, end }) => (
+              <NavLink
+                key={to}
+                to={to}
+                end={end}
+                onClick={closeMenu}
+                className={({ isActive }) =>
+                  `border-b border-white/10 py-2 text-xl ${
+                    isActive
+                      ? "font-medium text-white"
+                      : "text-gray-300 transition hover:text-white"
+                  }`
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
 
-            <Link 
-              to="/contact" 
+            <Link
+              to="/contact"
               onClick={closeMenu}
-              className="mt-8 flex items-center justify-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full hover:bg-white hover:text-black transition w-full"
+              className="mt-8 flex w-full items-center justify-center gap-3 rounded-full border border-white/20 px-8 py-4 text-white transition hover:bg-white hover:text-black"
             >
               Work with us
-              <span>→</span>
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </Link>
           </div>
         </div>

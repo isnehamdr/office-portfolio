@@ -4,9 +4,9 @@ export default function ContactPage() {
   return (
     <>
     <div className="overflow-x-hidden">
-    <div className=" bg-[#f5f4f0] py-28 px-6 lg:px-8 mt-12">
+    <div className=" bg-[#f5f4f0] py-20 px-6 lg:px-8 ">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl md:text-5xl font-semibold text-gray-900 mb-10 md:mb-12">Let's Connect</h1>
+        <h1 className="text-3xl md:text-5xl font-normal text-gray-900 mb-10 md:mb-12 pt-12">Let's Connect</h1>
 
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
           {/* Left: Contact Cards */}

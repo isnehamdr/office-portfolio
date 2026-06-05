@@ -45,34 +45,34 @@ function revealStyle(
 // ── Data ──────────────────────────────────────────────────────────────────────
 const featuredArticle = {
   id: 1,
-  date: "May 29, 2025",
-  title: "Strategies to boost presence and scale your business",
+  date: "April 23, 2021",
+  title: "Can AI chatbots completely replace customer service representatives?",
   excerpt:
-    "We explore the essential strategies that businesses need to adopt in 2025 to stay ahead of the curve.",
-  image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&q=80",
+    "The emergence of artificial intelligence (AI) has generated discussions over its potential to transform several businesses in therapidly evolving field of technology.",
+  image: "/images/blog1.jpg",
   imageAlt: "Woman working on laptop in a cozy home office",
 };
 
 const smallArticles = [
   {
     id: 2,
-    date: "Jun 18, 2025",
-    title: "Strategies to grow brand and build lasting engagement",
-    image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=400&q=80",
+    date: "May 23, 2021",
+    title: "Cyber Hygiene – Practices to protect the health of Digital Assets",
+    image: "/images/blog2.jpg",
     imageAlt: "Team collaborating around a table",
   },
   {
     id: 3,
-    date: "May 24, 2025",
-    title: "Driving brand success with social media marketing",
-    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&q=80",
+    date: "August 16, 2024",
+    title: "Digital Journeys: The Tech-Powered Revolution of Online Travel Booking",
+    image: "/images/blog3.jpg",
     imageAlt: "Woman using laptop for social media",
   },
   {
     id: 4,
-    date: "May 24, 2025",
-    title: "Tips and tools to amplify your brand's online presence.",
-    image: "https://images.unsplash.com/photo-1552581234-26160f608093?w=400&q=80",
+    date: "July 30, 2024",
+    title: "The Future of Voice Search for Hospitality Brands",
+    image: "/images/blog4.webp",
     imageAlt: "Business presentation in office",
   },
 ];

@@ -4,6 +4,9 @@ import AwardRecognition from "../components/AwardRecognition";
 import Blogs from "../components/Blogs";
 import FAQ from "../components/Faq";
 import Newsletter from "../components/Newsletter";
+import Hero from "../components/Hero";
+import { HeartOff } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // ── Reveal hook (fires once) ──────────────────────────────────────────────────
 function useReveal(threshold = 0.1) {
@@ -64,7 +67,7 @@ export default function AboutPage() {
     <>
     <div className="overflow-x-hidden">
       <div
-        className="w-full py-14 sm:py-20 lg:py-24 mt-12 sm:mt-16"
+        className="w-full py-14 sm:py-20 "
         style={{ backgroundColor: "#f7f6f5" }}
       >
         <div className="px-5 sm:px-10 lg:px-24">
@@ -72,7 +75,7 @@ export default function AboutPage() {
           {/* ── Page title ── */}
           <h1
             ref={titleRef}
-            className="text-4xl sm:text-5xl font-semibold text-gray-900 mb-10 sm:mb-16"
+            className="text-4xl sm:text-5xl font-normal text-gray-900 mb-6 pt-12"
             style={revealStyle(titleVisible, {
               direction: "up",
               distance: 32,
@@ -198,7 +201,7 @@ export default function AboutPage() {
               </div>
 
               <div>
-                <button className="inline-flex items-center gap-2 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full">
+                <Link to="https://sait.com.np/portfolio" className="inline-flex items-center gap-2 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full">
                   See Our Work
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +212,8 @@ export default function AboutPage() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </button>
+                
+                </Link>
               </div>
             </div>
 

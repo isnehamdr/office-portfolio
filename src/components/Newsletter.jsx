@@ -44,9 +44,9 @@ function revealStyle(
 
 // ── Data ──────────────────────────────────────────────────────────────────────
 const checkItems = [
-  "Improvements for long-term success.",
-  "Leverage the latest trends and technology.",
-  "Work with team that understands your vision.",
+  "Direct bookings with real-time availability & pricing.",
+  "Seamless channel manager & OTA integration.",
+  "Boost revenue with zero commission on direct bookings.",
 ];
 
 // ── Check icon ────────────────────────────────────────────────────────────────
@@ -72,12 +72,51 @@ function CheckIcon() {
   );
 }
 
+// ── Phone icon ────────────────────────────────────────────────────────────────
+function PhoneIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-5 w-5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+      />
+    </svg>
+  );
+}
+
+// ── Partner badge ─────────────────────────────────────────────────────────────
+function PartnerBadge() {
+  return (
+    <span className="inline-flex items-center gap-1.5 bg-gray-100 text-gray-600 text-xs font-medium px-3 py-1 rounded-full mb-4 w-fit">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+        <path d="M6 1L7.5 4.5H11L8.5 6.5L9.5 10L6 8L2.5 10L3.5 6.5L1 4.5H4.5L6 1Z" fill="#333" />
+      </svg>
+      Official Exely Partner — Nepal
+    </span>
+  );
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 export default function Newsletter() {
-  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [submitted, setSubmitted] = useState(false);
 
   const [leftRef,  leftVisible]  = useReveal(0.1);
   const [rightRef, rightVisible] = useReveal(0.1);
+
+  function handleSubmit() {
+    if (phone.trim()) {
+      setSubmitted(true);
+    }
+  }
 
   return (
     <div className="w-full py-12 sm:py-24" style={{ backgroundColor: "#f7f6f5" }}>
@@ -99,10 +138,13 @@ export default function Newsletter() {
 
                 {/* Text content */}
                 <div className="flex flex-col justify-between flex-1 gap-12">
-                  {/* Heading */}
-                  <h2 className="text-gray-900 text-xl sm:text-2xl font-normal leading-snug mb-24">
-                    Let's build something innovative solutions to elevate your brand!
-                  </h2>
+                  {/* Badge + Heading */}
+                  <div>
+                    <PartnerBadge />
+                    <h2 className="text-gray-900 text-xl sm:text-2xl font-normal leading-snug mb-24">
+                      Power your hotel with Exely — Nepal's leading direct booking engine solution!
+                    </h2>
+                  </div>
 
                   {/* Checklist + button */}
                   <div className="flex flex-col gap-8">
@@ -117,8 +159,13 @@ export default function Newsletter() {
                       ))}
                     </ul>
 
-                    <button className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 transition-colors text-white text-sm font-medium px-6 py-3 rounded-full w-fit">
-                      Let's Collaborate
+                    <a
+                      href="https://sait.com.np/services/exely/booking-engine-nepal"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 transition-colors text-white text-sm font-medium px-6 py-3 rounded-full w-fit"
+                    >
+                      Book a Free Demo
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-4 w-4"
@@ -128,16 +175,28 @@ export default function Newsletter() {
                       >
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
-                    </button>
+                    </a>
                   </div>
                 </div>
 
-                {/* Phone image */}
+                {/* Image */}
                 <div className="w-full sm:w-[45%] flex-shrink-0 overflow-hidden h-56 sm:h-auto bg-[#e8e5e0] rounded-xl">
                   <img
-                    src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80"
-                    alt="App shown on a phone held in hand"
-                    className="w-full h-full object-cover"
+                    src="/images/service3.png"
+                    alt="Exely Booking Engine dashboard"
+                    className="w-full h-full object-contain"
+                    onError={(e) => {
+                      // fallback gradient if image not found
+                      e.target.style.display = "none";
+                      e.target.parentElement.style.background =
+                        "linear-gradient(135deg, #e8e5e0 0%, #d4cfc9 100%)";
+                      e.target.parentElement.innerHTML = `
+                        <div style="display:flex;align-items:center;justify-content:center;height:100%;flex-direction:column;gap:8px;color:#888;">
+                          <svg width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 00-1-1h-2a1 1 0 00-1 1v5m4 0H9"/></svg>
+                          <span style="font-size:13px;font-weight:500;">Exely Booking Engine</span>
+                        </div>
+                      `;
+                    }}
                   />
                 </div>
 
@@ -161,38 +220,53 @@ export default function Newsletter() {
               {/* Top text */}
               <div>
                 <h2 className="text-gray-900 text-xl sm:text-2xl font-bold leading-snug mb-4">
-                  Sign up for insider updates!
+                  Get a free consultation today!
                 </h2>
                 <p className="text-gray-500 text-sm leading-relaxed">
-                  Get the latest industry news, expert tips, and special offers
-                  right in your inbox. Stay informed of the curve!
+                  As an official Exely partner in Nepal, we help hotels, resorts,
+                  and accommodations get set up fast. Drop your number — we'll call you!
                 </p>
               </div>
+              <img src="/images/exely.png" alt="Exely Booking Engine dashboard" className="w-full h-full object-contain" />
 
-              {/* Email input */}
-              <div className="mt-10 flex items-center gap-2">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email..."
-                  className="flex-1 bg-gray-100 rounded-xl px-4 py-3 text-sm text-gray-700 placeholder-gray-400 outline-none focus:ring-2 focus:ring-gray-300 transition min-w-0"
-                />
-                <button
-                  className="w-11 h-11 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-colors rounded-xl flex-shrink-0 text-gray-700"
-                  aria-label="Subscribe"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              {/* Phone input */}
+              {submitted ? (
+                <div className="mt-10 flex items-center gap-2 bg-gray-100 rounded-xl px-4 py-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
-                </button>
-              </div>
+                  <span className="text-sm text-gray-600">We'll be in touch shortly!</span>
+                </div>
+              ) : (
+                <div className="mt-10 flex items-center gap-2">
+                  <div className="flex-1 flex items-center gap-2 bg-gray-100 rounded-xl px-4 py-3 focus-within:ring-2 focus-within:ring-gray-300 transition min-w-0">
+                    <PhoneIcon />
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
+                      placeholder="Your phone number..."
+                      className="flex-1 bg-transparent text-sm text-gray-700 placeholder-gray-400 outline-none min-w-0"
+                    />
+                  </div>
+                  <button
+                    onClick={handleSubmit}
+                    className="w-11 h-11 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition-colors rounded-xl flex-shrink-0 text-gray-700"
+                    aria-label="Submit phone number"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-5 w-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+                </div>
+              )}
 
             </div>
           </div>

@@ -1,42 +1,38 @@
 const projects = [
-  {
+ {
     id: 1,
-    title: "Maiden",
+    title: "Software Development",
     description:
-      "Maiden is built on the belief that stillness sparks transformation our mission is to help you find it daily.",
+      "Maiden is built on the belief that stillness sparks transformation — our mission is to help you find it daily.",
     tags: ["SaaS", "Website", "Blurbird", "2021"],
-    image:
-      "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80",
+    image: "/images/service1.jpg",
     imageAlt: "Maiden project – laptop on a desk with green plants",
   },
   {
     id: 2,
-    title: "Glamz",
+    title: "Digital Marketing",
     description:
-      "Feel your best with Glamz high-performance formulas designed to nurture and elevate your natural beauty.",
+      "Feel your best with Glamz — high-performance formulas designed to nurture and elevate your natural beauty.",
     tags: ["SaaS", "UI/UX", "Figma", "2020"],
-    image:
-      "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80",
-    imageAlt: "Glamz project – beauty product lifestyle shot on laptop",
+    image: "/images/service2.jpg",
+    imageAlt: "Glamz project – beauty product lifestyle shot",
   },
   {
     id: 3,
-    title: "Virox",
+    title: "Exely Suites Services",
     description:
       "Guiding businesses to scale and redefine their potential, creating impactful, transformative solutions.",
     tags: ["Web Design", "UI/UX", "Photoshop", "2022"],
-    image:
-      "https://images.unsplash.com/photo-1555212697-194d092e3b8f?w=800&q=80",
-    imageAlt: "Virox project – mobile UI on a tablet on a couch",
+    image: "/images/service3.png",
+    imageAlt: "Virox project – mobile UI on a tablet",
   },
   {
     id: 4,
-    title: "Blake",
+    title: "Online Travel Agency",
     description:
-      "Designing with purpose bringing creative ideas to life through intuitive and elegant digital solutions.",
+      "Designing with purpose — bringing creative ideas to life through intuitive and elegant digital solutions.",
     tags: ["App", "Web Design", "HTML", "2024"],
-    image:
-      "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80",
+    image: "/images/service4.png",
     imageAlt: "Blake project – dark portfolio site on tablet and phone",
   },
 ];
@@ -68,7 +64,7 @@ function ProjectCard({ project }) {
             <Tag key={tag} label={tag} />
           ))}
         </div>
-        <div className="w-full overflow-hidden h-64 sm:h-96 rounded-t-xl mt-6">
+        <div className="w-full overflow-hidden h-64 sm:h-100 rounded-t-xl mt-6">
         <img
           src={project.image}
           alt={project.imageAlt}
@@ -92,8 +88,8 @@ export default function WorkPage() {
       {/* Nav */}
       
       {/* Main content */}
-      <main className="px-4 sm:px-12 md:px-24 pb-16 py-24 mt-12">
-        <h1 className="text-2xl sm:text-5xl font-normal text-gray-900 mt-4 mb-6 sm:mb-16">
+      <main className="px-4 sm:px-12 md:px-24  py-20">
+        <h1 className="text-2xl sm:text-5xl font-normal text-gray-900 mt-4 mb-6 sm:mb-16 pt-12 ">
           Selected Projects
         </h1>
 

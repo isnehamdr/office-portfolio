@@ -58,6 +58,20 @@ const stats = [
     bg: "bg-[#1e1e1e]",
     textColor: "text-white",
   },
+  {
+    id: 3,
+    value: "500+",
+    description: "Hotels and resorts successfully onboarded across Nepal.",
+    bg: "bg-[#f7f6f5]",
+    textColor: "text-gray-900",
+  },
+  {
+    id: 4,
+    value: "12+",
+    description: "Years of experience delivering cutting-edge digital solutions.",
+    bg: "bg-gray-900",
+    textColor: "text-white",
+  },
 ];
 
 // ── Stat card — each observes itself ─────────────────────────────────────────
@@ -93,7 +107,7 @@ function StatCard({ stat, index }) {
       })}
     >
       <div
-        className={`${stat.bg} rounded-2xl p-8 sm:p-10 flex flex-col justify-between min-h-[200px] sm:min-h-[280px] lg:min-h-[320px] h-full`}
+        className={`${stat.bg} rounded-2xl p-8 sm:p-10 flex flex-col justify-between min-h-[200px] sm:min-h-[280px] lg:min-h-[220px] h-full`}
       >
         {/* Big number */}
         <p className={`${stat.textColor} text-5xl sm:text-6xl lg:text-7xl font-normal tracking-tight`}>
@@ -120,7 +134,7 @@ export default function FactsFigures() {
         <div className="flex flex-col lg:flex-row items-start gap-10 lg:gap-16">
 
           {/* ── LEFT — label + body text ── */}
-          <div className="w-full lg:w-[38%] flex-shrink-0 flex flex-col justify-center">
+        <div className="w-full lg:w-[38%] flex-shrink-0 lg:sticky lg:top-24 self-start">
 
             {/* Label */}
             <div
@@ -141,7 +155,7 @@ export default function FactsFigures() {
             {/* Body */}
             <p
               ref={bodyRef}
-              className="text-gray-800 text-base sm:text-lg lg:text-xl leading-relaxed font-normal"
+              className="text-gray-800 text-base sm:text-lg lg:text-xl leading-relaxed font-normal "
               style={revealStyle(bodyVisible, {
                 direction: "left",
                 distance: 32,
@@ -153,10 +167,11 @@ export default function FactsFigures() {
               improving &amp; adapting our services to meet the ever-evolving
               digital landscape.
             </p>
+            
           </div>
 
-          {/* ── RIGHT — stat cards ── */}
-          <div className="flex flex-col sm:flex-row gap-4 flex-1 w-full">
+          {/* ── RIGHT — stat cards (2×2 grid on larger screens) ── */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1 w-full">
             {stats.map((stat, index) => (
               <StatCard key={stat.id} stat={stat} index={index} />
             ))}

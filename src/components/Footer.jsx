@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { href } from "react-router-dom";
 
 // ── Reveal hook ───────────────────────────────────────────────────────────────
 function useReveal(threshold = 0.1) {
@@ -51,11 +52,16 @@ function IconFacebook() {
     </svg>
   );
 }
-function IconYouTube() {
+function IconLinkedIn() {
   return (
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
-      <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#0a0a0a"/>
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M4.98 3.5C4.98 4.88 3.86 6 2.48 6S0 4.88 0 3.5 1.12 1 2.48 1s2.5 1.12 2.5 2.5zM0.5 8h4V24h-4V8zm7 0h3.83v2.18h.05c.53-1.01 1.84-2.08 3.79-2.08 4.05 0 4.8 2.67 4.8 6.14V24h-4v-7.74c0-1.85-.03-4.23-2.58-4.23-2.58 0-2.98 2.01-2.98 4.1V24h-4V8z" />
     </svg>
   );
 }
@@ -70,10 +76,10 @@ function IconX() {
 // ── Data ──────────────────────────────────────────────────────────────────────
 const pages = ["About us", "Works", "Services", "Blogs", "Contact us"];
 const socials = [
-  { name: "Instagram", icon: <IconInstagram /> },
-  { name: "Facebook",  icon: <IconFacebook /> },
-  { name: "YouTube",   icon: <IconYouTube /> },
-  { name: "Twitter",   icon: <IconX /> },
+  { name: "Instagram", icon: <IconInstagram />, href: "https://www.instagram.com/mesandipb/" },
+  { name: "Facebook",  icon: <IconFacebook />, href: "https://www.facebook.com/mesandipb" },
+  { name: "LinkedIn",   icon: <IconLinkedIn />, href: "https://www.linkedin.com/in/mesandipb" },
+  { name: "Twitter",   icon: <IconX />, href: "https://x.com/mesandipb" },
 ];
 
 // ── Vertical divider (desktop only) ──────────────────────────────────────────
@@ -191,17 +197,22 @@ export default function Footer() {
               <p className="text-white text-xs font-bold tracking-widest uppercase mb-5">Follow Us</p>
               <ul className="flex flex-col gap-3">
                 {socials.map((s) => (
-                  <li key={s.name}>
-                    <a href="#" className="flex items-center gap-3 group hover:opacity-80 transition-opacity">
-                      <span className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-md text-white group-hover:bg-white/20 transition-colors flex-shrink-0">
-                        {s.icon}
-                      </span>
-                      <span className="text-white/70 text-sm group-hover:text-white transition-colors">
-                        {s.name}
-                      </span>
-                    </a>
-                  </li>
-                ))}
+  <li key={s.name}>
+    <a
+      href={s.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center gap-3 group hover:opacity-80 transition-opacity"
+    >
+      <span className="w-8 h-8 flex items-center justify-center bg-white/10 rounded-md text-white group-hover:bg-white/20 transition-colors flex-shrink-0">
+        {s.icon}
+      </span>
+      <span className="text-white/70 text-sm group-hover:text-white transition-colors">
+        {s.name}
+      </span>
+    </a>
+  </li>
+))}
               </ul>
             </FooterCol>
 

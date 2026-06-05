@@ -300,13 +300,13 @@ export default function ServicePage() {
   return (
     <>
     <div className="overflow-x-hidden">
-      <div className="min-h-screen mt-14 sm:mt-16 w-full bg-[#f7f6f5]">
-        <div className="px-5 sm:px-10 lg:px-24 py-12 sm:py-16 lg:py-20">
+      <div className="min-h-screen  w-full bg-[#f7f6f5]">
+        <div className="px-5 sm:px-10 lg:px-24 py-12 sm:py-16 lg:py-20 ">
 
           {/* Heading */}
           <h2
             ref={headingRef}
-            className="text-black text-3xl sm:text-4xl lg:text-5xl font-semibold mb-10 sm:mb-14 lg:mb-16 tracking-wide"
+            className="text-black text-3xl sm:text-4xl lg:text-5xl font-normal mb-10 lg:mb-12 sm:pt-12  tracking-wide"
             style={revealStyle(headingVisible, {
               direction: "up",
               distance: 32,
