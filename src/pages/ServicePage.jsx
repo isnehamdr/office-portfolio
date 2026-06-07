@@ -306,7 +306,7 @@ export default function ServicePage() {
           {/* Heading */}
           <h2
             ref={headingRef}
-            className="text-black text-3xl sm:text-4xl lg:text-5xl font-normal mb-10 lg:mb-12 sm:pt-12  tracking-wide"
+            className="text-black text-3xl sm:text-4xl lg:text-5xl font-normal mb-10 lg:mb-12 pt-12  tracking-wide"
             style={revealStyle(headingVisible, {
               direction: "up",
               distance: 32,

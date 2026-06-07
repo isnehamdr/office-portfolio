@@ -532,9 +532,9 @@ export default function FeaturedClients() {
                   className="w-14 h-14 object-contain"
                 />
 
-                <span className="font-medium text-sm">
+                {/* <span className="font-medium text-sm">
                   {client.name}
-                </span>
+                </span> */}
               </div>
             ))}
           </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 // ── Reveal hook (fires once) ──────────────────────────────────────────────────
 function useReveal(threshold = 0.1) {
@@ -179,7 +180,7 @@ export default function AwardRecognition() {
                 duration: 1.0,
               })}
             >
-              <button className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 transition-colors text-gray-900 text-xs sm:text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full">
+              <Link to="/contact" className="inline-flex items-center gap-2 bg-white hover:bg-gray-100 transition-colors text-gray-900 text-xs sm:text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full">
                 Work With us
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +191,7 @@ export default function AwardRecognition() {
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </button>
+              </Link>
             </div>
           </div>
 

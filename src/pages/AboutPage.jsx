@@ -115,7 +115,7 @@ export default function AboutPage() {
             >
               <div className="w-24 sm:w-32 lg:w-40 h-11 sm:h-13 lg:h-16 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
                 <img
-                  src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=400&q=80"
+                  src="/images/about1.png"
                   alt="Person working on laptop"
                   className="w-full h-full object-cover"
                 />
@@ -174,7 +174,7 @@ export default function AboutPage() {
               })}
             >
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=900&q=80"
+                src="/images/about2.png"
                 alt="Team working together in a modern office"
                 className="w-full h-56 sm:h-64 lg:h-72 object-cover"
               />

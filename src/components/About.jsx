@@ -122,7 +122,7 @@ export default function About() {
         >
           <span className="block w-5 h-px bg-stone-800" />
           <span className="text-xs sm:text-sm font-normal tracking-[0.10em] uppercase text-stone-800">
-            Who We Are
+            About Me
           </span>
         </div>
 
@@ -132,7 +132,7 @@ export default function About() {
           className="text-base sm:text-lg md:text-xl text-stone-900 leading-relaxed max-w-2xl mb-4"
           style={revealStyle(headlineVisible, { direction: "up", distance: 28, delay: 0.1, duration: 1.1 })}
         >
-          We are a dynamic agency dedicated to crafting innovative digital solutions
+          A dynamic agency dedicated to crafting innovative digital solutions
           that help businesses grow, engage, and succeed.
         </h2>
       </section>

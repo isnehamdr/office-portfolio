@@ -1,39 +1,42 @@
+
+
+import { Link } from "react-router-dom";
 const projects = [
- {
+  {
     id: 1,
     title: "Software Development",
     description:
-      "Maiden is built on the belief that stillness sparks transformation — our mission is to help you find it daily.",
-    tags: ["SaaS", "Website", "Blurbird", "2021"],
+      "Custom software solutions that transform complex business challenges into scalable, efficient digital products. We build robust applications that drive innovation and growth.",
+    tags: ["Web Development", "API Integration", "Cloud"],
     image: "/images/service1.jpg",
-    imageAlt: "Maiden project – laptop on a desk with green plants",
+    imageAlt: "Software development – laptop on a desk with code on screen",
   },
   {
     id: 2,
     title: "Digital Marketing",
     description:
-      "Feel your best with Glamz — high-performance formulas designed to nurture and elevate your natural beauty.",
-    tags: ["SaaS", "UI/UX", "Figma", "2020"],
+      "Data-driven marketing strategies that amplify your brand's voice, increase engagement, and deliver measurable ROI across all digital channels.",
+    tags: ["SEO", "Social Media", "Analytics"],
     image: "/images/service2.jpg",
-    imageAlt: "Glamz project – beauty product lifestyle shot",
+    imageAlt: "Digital marketing – analytics dashboard on multiple devices",
   },
   {
     id: 3,
     title: "Exely Suites Services",
     description:
-      "Guiding businesses to scale and redefine their potential, creating impactful, transformative solutions.",
-    tags: ["Web Design", "UI/UX", "Photoshop", "2022"],
+      "Premium hospitality management solutions that elevate guest experiences, streamline operations, and maximize revenue for luxury suite providers.",
+    tags: ["Hospitality", "Booking System", "CRM"],
     image: "/images/service3.png",
-    imageAlt: "Virox project – mobile UI on a tablet",
+    imageAlt: "Exely Suites – luxury hotel booking interface on tablet",
   },
   {
     id: 4,
     title: "Online Travel Agency",
     description:
-      "Designing with purpose — bringing creative ideas to life through intuitive and elegant digital solutions.",
-    tags: ["App", "Web Design", "HTML", "2024"],
+      "Revolutionary travel booking platform that simplifies trip planning with real-time availability, secure payments, and personalized recommendations.",
+    tags: ["Travel Tech", "Mobile App", "Payment Gateway"],
     image: "/images/service4.png",
-    imageAlt: "Blake project – dark portfolio site on tablet and phone",
+    imageAlt: "Online travel agency – mobile app showing flight and hotel booking",
   },
 ];
 
@@ -102,12 +105,14 @@ export default function WorkPage() {
 
         {/* View All Work button */}
         <div className="flex justify-end mt-8 sm:mt-10">
-          <button className="bg-gray-900 hover:bg-gray-800 transition-colors text-white text-xs sm:text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full shadow-md flex items-center gap-2">
+          <Link
+           to="https://sait.com.np/portfolio" 
+           className="bg-gray-900 hover:bg-gray-800 transition-colors text-white text-xs sm:text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full shadow-md flex items-center gap-2">
             View All Work 
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </button>
+          </Link>
         </div>
       </main>
     </div>

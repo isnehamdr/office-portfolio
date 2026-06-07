@@ -43,7 +43,7 @@ const faqs = [
     id: "01",
     question: "What services does S.A I.T Solution offer?",
     answer:
-      "S.A I.T Solution specializes in branding, web design, digital marketing, app development, and creative solutions tailored to your business needs.",
+      "S.A I.T Solution specializes in branding, web design, digital marketing,  and creative solutions tailored to your business needs.",
   },
   {
     id: "02",

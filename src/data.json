@@ -1,0 +1,49 @@
+
+{
+  "blogs": [
+    {
+      "id": 1,
+      "date": "April 23, 2021",
+      "title": "Can AI chatbots completely replace customer service representatives?",
+      "excerpt": "AI chatbots improve customer service through speed, scalability, and cost efficiency, but they require significant investment, ongoing maintenance, and regular updates.",
+      "image": "/images/blog1.jpg",
+      "alt": "Team working together at a white desk in a modern studio",
+      "slug": "can-ai-chatbots-replace-customer-service-representatives",
+      "category": "Customer Experience",
+      "content": "The emergence of artificial intelligence (AI) has generated discussions over its potential to transform several businesses in the rapidly evolving field of technology. While AI chatbots offer 24/7 availability and instant responses, human empathy and complex problem-solving remain irreplaceable in many scenarios."
+    },
+    {
+      "id": 2,
+      "date": "May 23, 2021",
+      "title": "Cyber Hygiene – Practices to protect the health of Digital Assets",
+      "excerpt": "Cyber hygiene refers to the practices and habits that help protect individuals and organizations from cyber threats. Strong cyber hygiene reduces security risks, improves digital resilience, and enables safer use of technology in an increasingly connected world.",
+      "image": "/images/blog2.jpg",
+      "alt": "Designer working on UI layouts on a large monitor",
+      "slug": "cyber-hygiene-practices",
+      "category": "Security",
+      "content": "Just like personal hygiene keeps us healthy, cyber hygiene protects our digital lives. Key practices include using strong passwords, enabling two-factor authentication, regularly updating software, and avoiding suspicious links or downloads."
+    },
+    {
+      "id": 3,
+      "date": "August 16, 2024",
+      "title": "Digital Journeys: The Tech-Powered Revolution of Online Travel Booking",
+      "excerpt": "Online Travel Agencies (OTAs) have transformed the travel industry by making trip planning and booking faster, easier, and more convenient. Platforms such as Booking.com, Agoda, Expedia, and Goibibo allow travelers to book flights, accommodations, transportation, and activities in one place.",
+      "image": "/images/blog3.jpg",
+      "alt": "Close-up of printed typography specimen sheets",
+      "slug": "digital-journeys-tech-powered-travel-booking",
+      "category": "Travel Tech",
+      "content": "The integration of AI, real-time pricing algorithms, and mobile-first interfaces has redefined how travelers explore and book experiences. Personalization and seamless UX are now key differentiators among top OTAs."
+    },
+    {
+      "id": 4,
+      "date": "July 30, 2024",
+      "title": "The Future of Voice Search for Hospitality Brands",
+      "excerpt": "Voice search is changing how travelers find and book hospitality services. With the growing use of smart speakers and virtual assistants, travelers now use natural voice commands to search for hotels, restaurants, and travel experiences. To remain competitive and visible, hospitality businesses must optimize their digital presence for voice-based searches.",
+      "image": "/images/blog4.webp",
+      "alt": "Whiteboard covered in UI component sketches",
+      "slug": "future-of-voice-search-hospitality",
+      "category": "Hospitality Tech",
+      "content": "Optimizing for voice search means focusing on conversational keywords, local SEO, and structured data. As voice adoption grows, brands that adapt early will dominate visibility in hands-free travel planning."
+    }
+  ]
+}

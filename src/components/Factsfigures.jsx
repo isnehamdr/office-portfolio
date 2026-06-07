@@ -46,7 +46,7 @@ function revealStyle(
 const stats = [
   {
     id: 1,
-    value: "85%",
+    value: "97%",
     description: "Built on trust, with a strong client retention rate.",
     bg: "bg-orange-500",
     textColor: "text-white",
@@ -60,14 +60,14 @@ const stats = [
   },
   {
     id: 3,
-    value: "500+",
-    description: "Hotels and resorts successfully onboarded across Nepal.",
+    value: "100+",
+    description: "OTA integrations, website hosting setups, and marketing campaigns.",
     bg: "bg-[#f7f6f5]",
     textColor: "text-gray-900",
   },
   {
     id: 4,
-    value: "12+",
+    value: "18+",
     description: "Years of experience delivering cutting-edge digital solutions.",
     bg: "bg-gray-900",
     textColor: "text-white",

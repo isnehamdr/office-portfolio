@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 function useReveal(threshold = 0.1) {
   const ref = useRef(null);
@@ -49,43 +50,28 @@ const testimonials = [
   {
     id: 2,
     quote:
-      "SAIT Solution's Exely booking engine integration was seamless. Our direct bookings increased significantly and we no longer rely solely on OTAs. Highly recommend their team for any hotel looking to grow.",
-    name: "Rajesh Shrestha",
-    location: "Manager, Pokhara Grande",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
+      "SAIT Solution delivered exceptional hotel technology solutions for our group. Their software development expertise and OTA integration services have streamlined our operations across multiple properties in Nepal.",
+    name: "Bhoj Raj Tiwari",
+    location: "CEO, Nepal Hospitality Group",
+    image: "/images/testimonial2.png",
   },
   {
     id: 3,
     quote:
-      "We've been using SAIT's channel manager solution for over a year now. Managing rates and availability across all OTAs from one place has saved us hours every week and eliminated double bookings entirely.",
-    name: "Sushma Thapa",
-    location: "Director, Himalayan Suite Hotel",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80",
+      "The web development and digital solutions from SAIT Solution perfectly captured our brand. Their team in Pokhara created a website that showcases our trekking services while integrating booking functionality seamlessly.",
+    name: "Back to Nature Adventure",
+    location: "Travel Company in Nepal",
+    image: "/images/testimonial3.png",
   },
   {
     id: 4,
     quote:
-      "From website development to digital marketing, SAIT Solution handled everything professionally. Our online presence grew tremendously and we're getting more inquiries than ever before.",
-    name: "Bikash Maharjan",
-    location: "Owner, Lake View Resort",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
+      "For five years, SAIT Solution has been our trusted software development partner. Their digital marketing, website development, and IT solutions have been instrumental in growing our bakery business across Nepal.",
+    name: "Shiva Prasad Sharma",
+    location: "CEO, Everyday Bakery",
+    image: "/images/testimonial4.png",
   },
-  {
-    id: 5,
-    quote:
-      "The Exely price parity tool has been a game-changer. We can now monitor and maintain consistent pricing across all platforms, which has built guest trust and boosted our direct booking revenue.",
-    name: "Anita Gurung",
-    location: "Revenue Manager, Fish Tail Lodge",
-    image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80",
-  },
-  {
-    id: 6,
-    quote:
-      "SAIT Solution's team is responsive, knowledgeable, and genuinely invested in our success. Their review management solution helped us improve our online reputation and attract more guests consistently.",
-    name: "Dipesh Karki",
-    location: "GM, Gateway Himalaya Resort",
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&q=80",
-  },
+  
 ];
 
 // ── Single testimonial card (same style as original) ─────────────────────────
@@ -201,12 +187,13 @@ export default function ClientsReview() {
                 ref={ctaRef}
                 style={revealStyle(ctaVisible, { direction: "up", distance: 20, delay: 0.32, duration: 1 })}
               >
-                <button className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 transition-colors text-white text-xs sm:text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full">
+                <Link
+                  to="contact" className="inline-flex items-center gap-2 bg-gray-900 hover:bg-gray-800 transition-colors text-white text-xs sm:text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full">
                   Work With us
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </button>
+                </Link>
               </div>
             </div>
 
