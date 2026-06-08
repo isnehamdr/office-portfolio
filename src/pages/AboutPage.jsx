@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Journey from "../components/Journey";
-import AwardRecognition from "../components/AwardRecognition";
+// import AwardRecognition from "../components/AwardRecognition";
 import Blogs from "../components/Blogs";
 import FAQ from "../components/Faq";
 import Newsletter from "../components/Newsletter";
@@ -222,7 +222,7 @@ export default function AboutPage() {
       </div>
 
       <Journey />
-      <AwardRecognition />
+      {/* <AwardRecognition /> */}
       <Blogs />
       <FAQ />
       <Newsletter />
