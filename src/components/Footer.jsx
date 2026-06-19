@@ -344,7 +344,7 @@ function GallerySection() {
           <p className="text-white/40 text-sm">
             Crafted by{" "}
             <a href="https://sait.com.np/" className="underline underline-offset-2 text-white/60 hover:text-white transition-colors">
-              S.A I.T Solution Trade and Concern
+              S.A I.T Solution Nepal
             </a>
           </p>
         </div>
@@ -409,15 +409,16 @@ export default function Footer() {
 
             {/* ── 3. Send a Message ── */}
             <FooterCol delay={0.2}>
-              <p className="text-white text-xs font-bold tracking-widest uppercase sm:mb-0 mb-2 sm:mt-0 mt-8">Send Us A Message</p>
+              <p className="text-white text-xs font-bold tracking-widest uppercase sm:mb-0 mb-2 sm:mt-0 mt-8">Send Me A Message</p>
               <a
                 href="mailto:sandip@sait.com.np"
                 className="text-white text-sm underline underline-offset-2 hover:text-white/70 transition-colors block mb-3"
               >
                 sandip@sait.com.np
               </a>
-              <p className="text-white/40 text-sm leading-relaxed">
-                Get updates and exclusive offers straight to your inbox.
+              <p className="text-white/40 text-sm leading-relaxed max-w-[300px]">
+                Get updates and exclusive offers straight to your inbox.  Feel free to reach out for collaborations, projects, or inquiries.
+
               </p>
             </FooterCol>
 
@@ -441,7 +442,7 @@ export default function Footer() {
 
             {/* ── 5. Socials ── */}
             <FooterCol delay={0.4}>
-              <p className="text-white text-xs font-bold tracking-widest uppercase sm:mb-0 mb-2 sm:mt-0 mt-8">Follow Us</p>
+              <p className="text-white text-xs font-bold tracking-widest uppercase sm:mb-0 mb-2 sm:mt-0 mt-8">Follow Me</p>
               <ul className="flex flex-col gap-3">
                 {socials.map((s) => (
                   <li key={s.name}>

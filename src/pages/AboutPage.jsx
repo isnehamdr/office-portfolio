@@ -82,7 +82,7 @@ export default function AboutPage() {
               duration: 1.0,
             })}
           >
-            About us
+            About Me
           </h1>
 
           {/* ── Hero tagline ── */}
@@ -99,7 +99,7 @@ export default function AboutPage() {
                 duration: 1.05,
               })}
             >
-              Empowering businesses with creative strategies, innovation
+              I help businesses grow with creative strategy, innovation
             </p>
 
             {/* Line 2 — inline image chip + text */}
@@ -116,7 +116,7 @@ export default function AboutPage() {
               <div className="w-24 sm:w-32 lg:w-40 h-11 sm:h-13 lg:h-16 rounded-xl overflow-hidden flex-shrink-0 shadow-sm">
                 <img
                   src="/images/about1.png"
-                  alt="Person working on laptop"
+                  alt="Sandip Bhattarai working"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -141,7 +141,7 @@ export default function AboutPage() {
               })}
             >
               <p className="text-gray-800 text-base sm:text-lg font-normal mb-5">
-                We are committed to:
+                I am committed to:
               </p>
               <ul className="flex flex-col gap-3.5">
                 {commitments.map((item, i) => (
@@ -175,7 +175,7 @@ export default function AboutPage() {
             >
               <img
                 src="/images/about2.png"
-                alt="Team working together in a modern office"
+                alt="Sandip Bhattarai at work"
                 className="w-full h-56 sm:h-64 lg:h-72 object-cover"
               />
             </div>
@@ -196,13 +196,13 @@ export default function AboutPage() {
                   Creating meaningful digital experiences
                 </p>
                 <p className="text-gray-600 text-base sm:text-lg leading-relaxed">
-                  We are your creative partners in crafting impactful digital experiences.
+                  I am your creative partner in crafting impactful digital experiences.
                 </p>
               </div>
 
               <div>
                 <Link to="https://sait.com.np/portfolio" className="inline-flex items-center gap-2 border border-gray-900 text-gray-900 hover:bg-gray-900 hover:text-white transition-colors text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full">
-                  See Our Work
+                  See My Work
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-4 w-4"
