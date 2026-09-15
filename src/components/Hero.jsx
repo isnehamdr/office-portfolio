@@ -91,7 +91,7 @@ export default function Hero() {
 
       <section
         id="home"
-        className="relative min-h-screen px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 flex items-center overflow-hidden z-10"
+        className="relative min-h-screen px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 flex items-center overflow-hidden z-10 bg-black"
       >
         {/* Video Background */}
         <video
