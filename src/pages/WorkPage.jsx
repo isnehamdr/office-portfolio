@@ -1,6 +1,7 @@
 
 
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const projects = [
   {
     id: 1,
@@ -86,6 +87,16 @@ function ProjectCard({ project }) {
 export default function WorkPage() {
   return (
     <>
+
+    <Helmet>
+  <title>Work | Sandip Bhattarai</title>
+  <meta name="description" content="A selection of projects and work by Sandip Bhattarai." />
+  <link rel="canonical" href="https://sandipbhattarai.com.np/work" />
+  <meta property="og:title" content="Work | Sandip Bhattarai" />
+  <meta property="og:description" content="A selection of projects and work by Sandip Bhattarai." />
+  <meta property="og:url" content="https://sandipbhattarai.com.np/work" />
+  <meta property="og:type" content="website" />
+</Helmet>
     <div className="overflow-x-hidden">
     <div className="min-h-screen bg-[#f7f6f5] ">
       {/* Nav */}

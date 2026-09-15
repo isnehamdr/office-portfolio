@@ -199,10 +199,13 @@ export default function SelectedProjects() {
           style={revealStyle(buttonVisible, { direction: "up", distance: 20, delay: 0.1, duration: 0.9 })}
         >
           <button className="bg-gray-900 hover:bg-gray-800 transition-colors text-white text-xs sm:text-sm font-medium px-5 sm:px-6 py-2.5 sm:py-3 rounded-full shadow-md flex items-center gap-2">
+          <a href="https://sait.com.np/portfolio" 
+          target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
             View All Work
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
+          </a>
           </button>
         </div>
       </main>

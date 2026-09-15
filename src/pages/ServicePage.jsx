@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Blogs from "../components/Blogs";
+import { Helmet } from "react-helmet-async";
 
 // ── Reveal hook (fires once) ──────────────────────────────────────────────────
 function useReveal(threshold = 0.1) {
@@ -255,6 +256,17 @@ function ServiceCard({ service, index }) {
   const row = Math.floor(index / 3);
 
   return (
+    <>
+    <Helmet>
+  <title>Services | Sandip Bhattarai</title>
+  <meta name="description" content="Web development and design services offered by Sandip Bhattarai." />
+  <link rel="canonical" href="https://sandipbhattarai.com.np/services" />
+  <meta property="og:title" content="Services | Sandip Bhattarai" />
+  <meta property="og:description" content="Web development and design services offered by Sandip Bhattarai." />
+  <meta property="og:url" content="https://sandipbhattarai.com.np/services" />
+  <meta property="og:type" content="website" />
+</Helmet>
+    
     <div
       ref={ref}
       style={revealStyle(visible, {
@@ -290,6 +302,7 @@ function ServiceCard({ service, index }) {
         ))}
       </ul>
     </div>
+    </>
   );
 }
 

@@ -199,13 +199,15 @@ export default function About() {
 								  operations, I help hotels and businesses implement smart solutions that improve
 								  efficiency, increase revenue, and enhance customer experiences.
 							</p>
-							<button 
-							className="self-start inline-flex items-center gap-2 bg-stone-900 text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-stone-700 transition-colors">
+							<a
+								href="/about"
+								className="self-start inline-flex items-center gap-2 bg-stone-900 text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-stone-700 transition-colors"
+							>
 								About Me
 								<svg width="14" height="14" viewBox="0 0 16 16" fill="none">
 									<path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
 								</svg>
-							</button>
+							</a>
 						</div>
 					</div>
 				</div>

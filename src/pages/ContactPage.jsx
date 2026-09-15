@@ -352,6 +352,7 @@
 
 import { MapPin, Mail, Phone, ArrowRight, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -470,6 +471,14 @@ export default function ContactPage() {
 
   return (
     <>
+    <Helmet>
+        <title>Contact | Sandip Bhattarai</title>
+        <meta name="description" content="Get in touch with Sandip Bhattarai for web development and design projects." />
+        <meta property="og:title" content="Contact | Sandip Bhattarai" />
+        <meta property="og:description" content="Get in touch with Sandip Bhattarai for web development and design projects." />
+        <meta property="og:url" content="https://sandipbhattarai.com.np/contact" />
+      </Helmet>
+
       <div className="overflow-x-hidden">
         <div className="bg-[#f5f4f0] py-16 px-4 md:py-20 md:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">

@@ -123,11 +123,21 @@
 
 import { Link } from "react-router-dom";
 import blogData from "../data/blog.json"; // Adjust path if this file is in a subfolder
-
+import { Helmet } from "react-helmet-async";
 export default function BlogPage() {
   const blogs = blogData.blogs;
 
   return (
+    <>
+    <Helmet>
+  <title>Blog | Sandip Bhattarai</title>
+  <meta name="description" content="Articles on web development, design, and projects by Sandip Bhattarai." />
+  <link rel="canonical" href="https://sandipbhattarai.com.np/blog" />
+  <meta property="og:title" content="Blog | Sandip Bhattarai" />
+  <meta property="og:description" content="Articles on web development, design, and projects by Sandip Bhattarai." />
+  <meta property="og:url" content="https://sandipbhattarai.com.np/blog" />
+  <meta property="og:type" content="website" />
+</Helmet>
     <div className="overflow-x-hidden">
       <div className="min-h-screen w-full" style={{ backgroundColor: "#f7f6f5" }}>
         <div className="px-6 sm:px-10 lg:px-24 py-14 sm:py-20">
@@ -182,5 +192,6 @@ export default function BlogPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -5,6 +5,7 @@ import Blogs from "../components/Blogs";
 import FAQ from "../components/Faq";
 import Newsletter from "../components/Newsletter";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 // ── Reveal hook (fires once) ──────────────────────────────────────────────────
@@ -64,6 +65,14 @@ export default function AboutPage() {
 
   return (
     <>
+ <Helmet>
+        <title>About | Sandip Bhattarai</title>
+        <meta name="description" content="Learn more about Sandip Bhattarai, a web developer and designer based in Nepal." />
+        <meta property="og:title" content="About | Sandip Bhattarai" />
+        <meta property="og:description" content="Learn more about Sandip Bhattarai, a web developer and designer based in Nepal." />
+        <meta property="og:url" content="https://sandipbhattarai.com.np/about" />
+      </Helmet>
+
     <div className="overflow-x-hidden">
       <div
         className="w-full py-14 sm:py-20 "

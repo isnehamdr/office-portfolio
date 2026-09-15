@@ -290,6 +290,7 @@
 // }
 
 import { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 // ── Reveal hook ───────────────────────────────────────────────────────────────
 function useReveal(threshold = 0.1) {
@@ -485,16 +486,19 @@ export default function FeaturedClients() {
                 delay: 0.25,
               })}
             >
-              <button className="inline-flex items-center gap-3 border border-black px-6 py-3 rounded-full hover:bg-black hover:text-white transition-all">
-                Work With Us
+              <Link
+  to="/contact"
+  className="inline-flex items-center gap-3 border border-black px-6 py-3 rounded-full hover:bg-black hover:text-white transition-all"
+>
+  Work With Us
 
-                {/* IMAGE INSTEAD OF SVG */}
-                <img
-                  src="images/arrow.png"
-                  alt="Arrow"
-                  className="w-4 h-4 object-contain"
-                />
-              </button>
+  {/* IMAGE INSTEAD OF SVG */}
+  <img
+    src="/images/arrow.png"
+    alt="Arrow"
+    className="w-4 h-4 object-contain"
+  />
+</Link>
             </div>
           </div>
 
