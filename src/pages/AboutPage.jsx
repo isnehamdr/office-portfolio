@@ -4,9 +4,8 @@ import Journey from "../components/Journey";
 import Blogs from "../components/Blogs";
 import FAQ from "../components/Faq";
 import Newsletter from "../components/Newsletter";
-import Hero from "../components/Hero";
-import { HeartOff } from "lucide-react";
 import { Link } from "react-router-dom";
+
 
 // ── Reveal hook (fires once) ──────────────────────────────────────────────────
 function useReveal(threshold = 0.1) {
@@ -126,6 +125,7 @@ export default function AboutPage() {
             </div>
           </div>
 
+
           {/* ── Three-column content row ── */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 items-start">
 
@@ -222,6 +222,7 @@ export default function AboutPage() {
       </div>
 
       <Journey />
+   
       {/* <AwardRecognition /> */}
       <Blogs />
       <FAQ />

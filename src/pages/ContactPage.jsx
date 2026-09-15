@@ -1,4 +1,4 @@
-import { MapPin, Mail, Phone, ArrowRight } from "lucide-react";
+import { MapPin, Mail, Phone, ArrowRight, ExternalLink } from "lucide-react";
 import { useState, useEffect } from "react";
 
 export default function ContactPage() {
@@ -150,6 +150,20 @@ export default function ContactPage() {
                   <p className="text-white font-semibold text-xl mb-2 mt-4">Give us call</p>
                   <p className="text-white/90 text-base">+977  985-1172368</p>
                 </div>
+{/* Blue/Teal - Affiliation */}
+<div className="bg-[#2b6777] rounded-2xl p-6 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow">
+  <ExternalLink className="w-10 h-10 text-white" />
+  <p className="text-white font-semibold text-xl mb-2 mt-4">NYEF Member</p>
+  <a 
+    href="https://nyefpokhara.org/member/140" 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="text-white/90 text-base hover:underline"
+  >
+    View Profile
+  </a>
+</div>
+
               </div>
 
               {/* Right: Contact Form */}

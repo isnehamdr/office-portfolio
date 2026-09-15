@@ -15,6 +15,10 @@ const journeySteps = [
     tag: "The Founding",
     title: "Starting from Scratch",
     body: "With this mission in mind, Sandip established S.A I.T Solution and Trade Concern Pvt. Ltd. in Kathmandu. The early days were far from easy — they started in a humble residential flat. However, their determination and commitment to excellence gradually set them apart in the industry.",
+    link: {
+      text: "Visit Website",
+      url: "https://sait.com.np/",
+    },
   },
   {
     tag: "Growth — 2019",
@@ -25,6 +29,15 @@ const journeySteps = [
     tag: "Today",
     title: "Where He Stands Today",
     body: "With 12+ years of experience in IT and business services, Sandip has helped businesses grow by providing practical and effective solutions across digital transformation, IT infrastructure, cybersecurity, and software development.",
+  },
+  {
+    tag: "Community",
+    title: "Giving Back to the Community",
+    body: "Sandip is also a member of the Nepalese Young Entrepreneurs Forum (NYEF) – Pokhara Chapter, staying connected with and contributing to Pokhara's growing entrepreneurial community.",
+    link: {
+      text: "View Profile",
+      url: "https://nyefpokhara.org/member/140",
+    },
   },
   {
     tag: "Expertise",
@@ -72,6 +85,17 @@ function TimelineItem({ step, index }) {
             </span>
             <h3 className="text-xl text-stone-900 mb-2 leading-snug tracking-[1px]">{step.title}</h3>
             <p className="text-md text-stone-700 leading-relaxed">{step.body}</p>
+            {step.link && (
+              <button
+               onClick={() => window.open(step.link.url, "_blank")}
+                className="inline-flex items-center gap-1.5 mt-3 text-sm font-medium border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-colors px-4 py-2 rounded-full"
+              >
+                {step.link.text}
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
+            )}
           </div>
         ) : (
           // empty right side on odd items
@@ -101,6 +125,17 @@ function TimelineItem({ step, index }) {
             </span>
             <h3 className="text-xl text-stone-900 mb-2 leading-snug tracking-[1px]">{step.title}</h3>
             <p className="text-md text-stone-700 leading-relaxed">{step.body}</p>
+            {step.link && (
+              <button
+             onClick={() => window.open(step.link.url, "_blank")}
+                className="inline-flex items-center gap-1.5 mt-3 text-sm font-medium border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-colors px-4 py-2 rounded-full"
+              >
+                {step.link.text}
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </button>
+            )}
           </div>
         ) : (
           <div />
@@ -145,6 +180,17 @@ function TimelineItemMobile({ step, index }) {
       </span>
       <h3 className="text-xl text-stone-900 mb-2 leading-snug">{step.title}</h3>
       <p className="text-sm text-stone-500 leading-relaxed max-w-2xl">{step.body}</p>
+      {step.link && (
+        <button
+          onClick={() => window.open(step.link.url, "_blank")}
+          className="inline-flex items-center gap-1.5 mt-3 text-sm font-medium border border-stone-900 text-stone-900 hover:bg-stone-900 hover:text-white transition-colors px-4 py-2 rounded-full"
+        >
+          {step.link.text}
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 }

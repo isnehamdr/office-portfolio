@@ -124,7 +124,9 @@ export default function About() {
 						})
 				}>
 					<span className="block w-5 h-px bg-stone-800"/>
-					<span className="text-xs sm:text-sm font-normal tracking-[0.10em] uppercase text-stone-800">
+					<span 
+					
+					 className="text-xs sm:text-sm font-normal tracking-[0.10em] uppercase text-stone-800">
 						About Me
 					</span>
 				</div>
@@ -197,7 +199,8 @@ export default function About() {
 								  operations, I help hotels and businesses implement smart solutions that improve
 								  efficiency, increase revenue, and enhance customer experiences.
 							</p>
-							<button className="self-start inline-flex items-center gap-2 bg-stone-900 text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-stone-700 transition-colors">
+							<button 
+							className="self-start inline-flex items-center gap-2 bg-stone-900 text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-stone-700 transition-colors">
 								About Me
 								<svg width="14" height="14" viewBox="0 0 16 16" fill="none">
 									<path d="M3 8h10M9 4l4 4-4 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
