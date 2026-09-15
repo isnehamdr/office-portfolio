@@ -433,9 +433,8 @@ export default function Footer() {
               >
               +977 985-1172368
               </a>
-              <p className="text-white/40 text-sm leading-relaxed">
-                Our team is happy to help on any working day.
-              </p>
+              <p className="text-white/40 text-sm leading-relaxed max-w-[300px]">
+ Feel free to reach out if you'd like to work together or discuss your next project.</p>
             </FooterCol>
 
             {/* <HDivider /> */}
